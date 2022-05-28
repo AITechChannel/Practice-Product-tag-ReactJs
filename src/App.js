@@ -1,9 +1,11 @@
-import Tag from './Components/Tag';
+import Practice5 from './practice5/components';
+
+import './App.scss';
 
 function App() {
     return (
-        <div className="App" style={{ display: 'flex' }}>
-            <Tag />
+        <div className="wrapper">
+            <Practice5 />
         </div>
     );
 }
