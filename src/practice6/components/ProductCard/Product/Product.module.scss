@@ -1,0 +1,22 @@
+.container {
+    padding: 10px;
+    text-align: center;
+    .img {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    h5 {
+        margin: 10px 0;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        color: #333;
+    }
+    p {
+        color: #b2b5b3;
+        margin: 16px 0;
+        font-size: 1.4rem;
+    }
+}

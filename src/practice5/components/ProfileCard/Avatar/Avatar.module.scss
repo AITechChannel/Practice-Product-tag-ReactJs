@@ -1,0 +1,18 @@
+.container {
+    padding: 10px;
+    text-align: center;
+    .img {
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba($color: #000000, $alpha: 0.2);
+            object-fit: cover;
+        }
+    }
+    h5 {
+        margin: 10px 0;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+    }
+}
