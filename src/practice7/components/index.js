@@ -1,21 +1,15 @@
-import classNames from 'classnames/bind';
-
-import styles from './ProductCard.module.scss';
-import Button from './Button';
-
-import data from '../data';
-import { Container } from 'react-bootstrap';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import 'swiper/css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css/autoplay';
+import classNames from 'classnames/bind';
 import { Autoplay } from 'swiper';
-
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import data from '../data';
+import styles from './ProductCard.module.scss';
 import Product from './ProductCard/Product';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+
+import { Navigation } from 'swiper';
+import 'swiper/css/navigation';
 
 const cx = classNames.bind(styles);
 
@@ -24,9 +18,10 @@ function ProductCard() {
     return (
         <div className={cx('container')}>
             <Swiper
-                modules={[Autoplay]}
+                modules={[Autoplay, Navigation]}
                 autoplay={{ delay: 2000 }}
                 loop={true}
+                // navigation={true}
                 spaceBetween={10}
                 breakpoints={{
                     0: {
@@ -34,9 +29,11 @@ function ProductCard() {
                     },
                     992: {
                         slidesPerView: 3,
+                        navigation: true,
                     },
                     1200: {
                         slidesPerView: 4,
+                        navigation: true,
                     },
                 }}
                 onSlideChange={() => console.log('slide change')}
@@ -45,12 +42,17 @@ function ProductCard() {
                 {data.map((e, i) => (
                     <SwiperSlide key={i}>
                         <div className={cx('inner', 'bg-custom')}>
-                            <Product imgSrc={e.imgSrc} title={e.title} des={e.des} />
-                            <h5>XL/XXL/S</h5>
-                            <h4>{e.price}</h4>
-                            <Button primary leftIcon={<FontAwesomeIcon icon={faCartPlus} />}>
-                                Add Cart
-                            </Button>
+                            <Product
+                                imgSrc={e.imgSrc}
+                                shop_name={e.shop_name}
+                                price_now={e.price_now}
+                                price_origin={e.price_origin}
+                                sale_off={e.sale_off}
+                                product_des={e.product_des}
+                                star={e.star}
+                                sold={e.sold}
+                                store={e.store}
+                            />
                         </div>
                     </SwiperSlide>
                 ))}

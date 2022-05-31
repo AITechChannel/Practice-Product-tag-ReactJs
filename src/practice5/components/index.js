@@ -43,8 +43,8 @@ function Practice5() {
                 onSwiper={(swiper) => console.log(swiper)}
             >
                 {data.map((e, i) => (
-                    <SwiperSlide>
-                        <div key={i} className={cx('inner', 'bg-custom')}>
+                    <SwiperSlide key={i}>
+                        <div className={cx('inner', 'bg-custom')}>
                             <Avatar imgSrc={e.avatarSrc} full_name={e.full_name} job={e.job} />
 
                             <Infor icon={e.icon_dob} title={'dob'} content={e.dob} />
