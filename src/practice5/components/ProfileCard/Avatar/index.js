@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Avatar.module.scss';
-
-import { useRef, useState } from 'react';
 
 const cx = classNames.bind(styles);
 

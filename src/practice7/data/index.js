@@ -11,7 +11,7 @@ const data = [
         store: 100,
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/1.jpg',
+        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/2.jpg',
         shop_name: 'Young Shop',
         price_now: '$1,134',
         price_origin: '$1,345',
@@ -22,7 +22,7 @@ const data = [
         store: 100,
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/1.jpg',
+        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/3.jpg',
         shop_name: 'Young Shop',
         price_now: '$1,134',
         price_origin: '$1,345',
@@ -33,7 +33,7 @@ const data = [
         store: 100,
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/1.jpg',
+        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/4.jpg',
         shop_name: 'Young Shop',
         price_now: '$1,134',
         price_origin: '$1,345',
@@ -44,7 +44,7 @@ const data = [
         store: 100,
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/1.jpg',
+        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/5.jpg',
         shop_name: 'Young Shop',
         price_now: '$1,134',
         price_origin: '$1,345',
@@ -55,7 +55,7 @@ const data = [
         store: 100,
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/1.jpg',
+        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-7-images/6.jpg',
         shop_name: 'Young Shop',
         price_now: '$1,134',
         price_origin: '$1,345',

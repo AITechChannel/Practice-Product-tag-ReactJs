@@ -1,36 +1,32 @@
-import Avatar from '~/practice5/components/ProfileCard/Avatar';
-import Infor from '~/practice5/components/ProfileCard/Infor';
-import Contact from '~/practice5/components/ProfileCard/Contact';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import classNames from 'classnames/bind';
-
+import { Autoplay, Navigation } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Avatar from '~/practice5/components/ProfileCard/Avatar';
+import Contact from '~/practice5/components/ProfileCard/Contact';
+import Infor from '~/practice5/components/ProfileCard/Infor';
+import data from '../data';
 import styles from './ProfileCard.module.scss';
 
-import data from '../data';
-import { Container } from 'react-bootstrap';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import 'swiper/css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css/autoplay';
-import { Autoplay } from 'swiper';
-
 const cx = classNames.bind(styles);
-
-console.log(data);
 
 function Practice5() {
     return (
         <div className={cx('container')}>
             <Swiper
-                modules={[Autoplay]}
+                modules={[Autoplay, Navigation]}
                 autoplay={{ delay: 2000 }}
                 loop={true}
+                navigation={false}
                 spaceBetween={10}
                 breakpoints={{
                     0: {
                         slidesPerView: 1,
+                    },
+                    576: {
+                        slidesPerView: 2,
                     },
                     992: {
                         slidesPerView: 3,

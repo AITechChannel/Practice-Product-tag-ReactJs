@@ -1,9 +1,6 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
-import data from '~/practice5/data';
-
+import React from 'react';
 import styles from './Infor.module.scss';
 
 const cx = classNames.bind(styles);

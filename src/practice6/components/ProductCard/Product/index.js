@@ -1,8 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Product.module.scss';
 
-import { useRef, useState, useEffect } from 'react';
-
 const cx = classNames.bind(styles);
 
 function Product({ imgSrc, title, des }) {

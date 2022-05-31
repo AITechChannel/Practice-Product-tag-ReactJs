@@ -1,39 +1,41 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classNames from 'classnames/bind';
-import { Autoplay } from 'swiper';
+import { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import data from '../data';
 import styles from './ProductCard.module.scss';
 import Product from './ProductCard/Product';
 
-import { Navigation } from 'swiper';
-import 'swiper/css/navigation';
-
 const cx = classNames.bind(styles);
 
-console.log(data);
 function ProductCard() {
     return (
         <div className={cx('container')}>
             <Swiper
-                modules={[Autoplay, Navigation]}
+                modules={[Autoplay, Navigation, Pagination]}
+                pagination={{
+                    clickable: true,
+                }}
                 autoplay={{ delay: 2000 }}
                 loop={true}
-                // navigation={true}
+                navigation={true}
                 spaceBetween={10}
                 breakpoints={{
                     0: {
                         slidesPerView: 1,
                     },
+                    576: {
+                        slidesPerView: 2,
+                    },
                     992: {
                         slidesPerView: 3,
-                        navigation: true,
                     },
                     1200: {
                         slidesPerView: 4,
-                        navigation: true,
                     },
                 }}
                 onSlideChange={() => console.log('slide change')}
