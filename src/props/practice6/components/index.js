@@ -13,7 +13,7 @@ import Product from './ProductCard/Product';
 
 const cx = classNames.bind(styles);
 
-function ProductCard() {
+function Practice6() {
     return (
         <div className={cx('container')}>
             <Swiper
@@ -56,4 +56,4 @@ function ProductCard() {
     );
 }
 
-export default ProductCard;
+export default Practice6;
