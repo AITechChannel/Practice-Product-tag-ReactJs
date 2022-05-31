@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Practice-Product-tag-ReactJs/static/css/main.2e95655d.css",
-    "main.js": "/Practice-Product-tag-ReactJs/static/js/main.d26b1fc2.js",
+    "main.css": "/Practice-Product-tag-ReactJs/static/css/main.178ef10a.css",
+    "main.js": "/Practice-Product-tag-ReactJs/static/js/main.f56ea0b3.js",
     "static/js/787.4c9d15e8.chunk.js": "/Practice-Product-tag-ReactJs/static/js/787.4c9d15e8.chunk.js",
     "index.html": "/Practice-Product-tag-ReactJs/index.html",
-    "main.2e95655d.css.map": "/Practice-Product-tag-ReactJs/static/css/main.2e95655d.css.map",
-    "main.d26b1fc2.js.map": "/Practice-Product-tag-ReactJs/static/js/main.d26b1fc2.js.map",
+    "main.178ef10a.css.map": "/Practice-Product-tag-ReactJs/static/css/main.178ef10a.css.map",
+    "main.f56ea0b3.js.map": "/Practice-Product-tag-ReactJs/static/js/main.f56ea0b3.js.map",
     "787.4c9d15e8.chunk.js.map": "/Practice-Product-tag-ReactJs/static/js/787.4c9d15e8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2e95655d.css",
-    "static/js/main.d26b1fc2.js"
+    "static/css/main.178ef10a.css",
+    "static/js/main.f56ea0b3.js"
   ]
 }
