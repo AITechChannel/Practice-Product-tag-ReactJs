@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
+    --primary: #61dbfb;
     --inner-width-layout: 1150px;
     --grey-light: rgba(22, 24, 35, 0.34);
     --white: #fff;
@@ -37,5 +38,14 @@ button {
 
     &:hover {
         cursor: pointer;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

@@ -12,11 +12,11 @@ const cx = classNames.bind(styles);
 function Props() {
     return (
         <div className={cx('wrapper')}>
-            <h1>5. Block UI</h1>
+            <h1 className = {cx('title')}>5. Block UI</h1>
             <Practice5 />
-            <h1>6. Block UI</h1>
+            <h1 className = {cx('title')}>6. Block UI</h1>
             <Practice6 />
-            <h1>7. Block UI</h1>
+            <h1 className = {cx('title')}>7. Block UI</h1>
             <Practice7 />
         </div>
     );

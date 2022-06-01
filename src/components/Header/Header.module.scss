@@ -1,5 +1,10 @@
 .wrapper {
     background-color: #0c0626;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }
 
 .container {
@@ -15,8 +20,19 @@
     }
     .title {
         margin-right: 30px;
+        position: relative;
+        min-width: 120px;
+        h1 {
+        }
+        p {
+            position: absolute;
+        }
     }
     a + a {
-        margin-left: 10px;
+        margin-left: 20px;
+    }
+    a:hover {
+        color: #61dbfb;
+        transition: all 0.3s ease;
     }
 }

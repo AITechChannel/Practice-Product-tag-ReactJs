@@ -1,0 +1,15 @@
+.container {
+    span {
+        margin-right: 10px;
+        font-size: 3rem;
+        color: #0290e3;
+    }
+}
+
+.like,
+.disLike {
+    color: #0290e3;
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -4,9 +4,9 @@ import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Avatar from '~/props/practice5/components/ProfileCard/Avatar';
-import Contact from '~/props/practice5/components/ProfileCard/Contact';
-import Infor from '~/props/practice5/components/ProfileCard/Infor';
+import Avatar from '~/Props/practice5/components/ProfileCard/Avatar';
+import Contact from '~/Props/practice5/components/ProfileCard/Contact';
+import Infor from '~/Props/practice5/components/ProfileCard/Infor';
 import data from '../data';
 import styles from './ProfileCard.module.scss';
 

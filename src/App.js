@@ -1,11 +1,12 @@
-import Props from './props';
+import Props from './Props';
+import States from './States';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import MainLayout from './components/layouts/MainLayout';
 
 const sessions = [
     { path: '/Practice-Product-tag-ReactJs', component: Props },
-    // { path: '/session2', component: Practice6 },
+    { path: '/session2', component: States },
 ];
 
 function App() {
