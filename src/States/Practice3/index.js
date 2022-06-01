@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Practice3.module.scss';
 
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar, AiOutlineClose } from 'react-icons/ai';
 import { FcPrevious, FcNext } from 'react-icons/fc';
 
 import Modal from '~/components/Modal';
@@ -24,14 +24,18 @@ function Practice3() {
         }
     };
 
+    const modalRef = useRef();
+
+    console.log(modalRef);
+
     const ar = [5, 6, 7, 8];
     return (
-        <div className={cx('container')}>
+        <div ref={modalRef} className={cx('container')}>
             <div className={cx('photo')}>
-                <div className={cx('thumbnail')}>
-                    {ar.map((e) => {
+                <div className={cx('photo-list')}>
+                    {ar.map((e, i) => {
                         return (
-                            <div>
+                            <Fragment key={i}>
                                 <img
                                     src={`http://foundry.mediumra.re/img/cover${e}.jpg`}
                                     onClick={() => {
@@ -39,7 +43,7 @@ function Practice3() {
                                         setShowPhoto(true);
                                     }}
                                 />
-                            </div>
+                            </Fragment>
                         );
                     })}
                 </div>
@@ -49,32 +53,32 @@ function Practice3() {
                 <Modal>
                     <div className={cx('inner')}>
                         <div className={cx('photo')}>
-                            <span className={cx('control-prev')}>
+                            <span className={cx('control-prev', `${photoIndex == 5 ? 'limit-left' : ''}`)}>
                                 <FcPrevious onClick={hanldePrev} />
                             </span>
-                            {ar.map((e) => {
+                            {ar.map((e, i) => {
                                 return (
-                                    <div className={cx('image', `${photoIndex == e ? 'active' : ''}`)}>
+                                    <div key={i} className={cx('image', `${photoIndex == e ? 'active' : ''}`)}>
                                         <img src={`http://foundry.mediumra.re/img/cover${e}.jpg`} className={cx(``)} />
+                                        <span className={cx('control-close')}>
+                                            <AiOutlineClose onClick={() => setShowPhoto(false)} />
+                                        </span>
                                     </div>
                                 );
                             })}
-                            <span className={cx('control-next')}>
-                                <FcNext onClick={hanldeNext} />
-                            </span>
-                            <span className={cx('control-close')}>
+                            <span className={cx('control-next', `${photoIndex == 8 ? 'limit-right' : ''}`)}>
                                 <FcNext onClick={hanldeNext} />
                             </span>
                         </div>
                         <div className={cx('thumbnail')}>
-                            {ar.map((e) => {
+                            {ar.map((e, i) => {
                                 return (
-                                    <div>
+                                    <Fragment key={i}>
                                         <img
                                             src={`http://foundry.mediumra.re/img/cover${e}.jpg`}
                                             onClick={() => setPhotoIndex(e)}
                                         />
-                                    </div>
+                                    </Fragment>
                                 );
                             })}
                         </div>

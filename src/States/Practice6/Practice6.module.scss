@@ -1,36 +1,15 @@
+@import '../../scss/';
 .container {
     .inner {
         display: flex;
-        .photo {
-            overflow: hidden;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            .control {
-                font-size: 5rem;
-            }
-            img {
-                width: 70%;
-                transition: all 3s ease;
-                object-fit: cover;
-                &:hover {
-                    opacity: 1;
-                }
-            }
-        }
-
-        .thumbnail {
-            margin-top: 20px;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            img {
-                height: 100%;
-            }
-        }
         .nav {
             margin: 10px 0 20px 0;
+            @include tablet {
+                margin-right: 20px;
+                button {
+                    width: 200px !important;
+                }
+            }
         }
         .content {
             height: 100px;

@@ -1,3 +1,5 @@
+@import '../../scss/';
+
 .wrapper {
     background-color: #0c0626;
     position: fixed;
@@ -8,31 +10,107 @@
 }
 
 .container {
-    height: 90px;
+    height: 85px;
     margin: 0 auto;
     max-width: 1200px;
     color: white;
     display: flex;
     align-items: center;
+    @include tablet {
+        padding: 0 16px;
+    }
+    @include mobile {
+        justify-content: space-between;
+    }
     .logo {
-        width: 80px;
-        margin-right: 10px;
-    }
-    .title {
-        margin-right: 30px;
-        position: relative;
-        min-width: 120px;
+        display: flex;
+        align-items: center;
+        img {
+            width: 70px;
+            margin-right: 10px;
+        }
         h1 {
-        }
-        p {
-            position: absolute;
+            margin-right: 30px;
+            position: relative;
+            min-width: 120px;
         }
     }
-    a + a {
-        margin-left: 20px;
-    }
+
     a:hover {
         color: #61dbfb;
         transition: all 0.3s ease;
     }
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    li + li {
+        margin-left: 20px;
+    }
+    .active {
+        color: var(--primary);
+    }
+    flex: 1;
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.navbar.show {
+    @include mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        li {
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #0c0626;
+            width: 70%;
+        }
+    }
+}
+
+.auth {
+    a {
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px 18px 4px 6px;
+        border-radius: 99px;
+        p {
+            margin-left: 10px;
+            margin-bottom: 0;
+            line-height: 18px;
+        }
+        img {
+            border-radius: 99px;
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+        }
+        &:hover {
+            background-color: #333;
+        }
+    }
+}
+
+.menu-open {
+    display: none;
+    font-size: 3rem;
+
+    @include mobile {
+        display: block;
+    }
+}
+
+.menu-close {
+    position: absolute;
+    right: 16px;
+    top: 20px;
+    font-size: 3rem;
 }

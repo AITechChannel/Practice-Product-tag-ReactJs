@@ -5,8 +5,10 @@ import './App.scss';
 import MainLayout from './components/layouts/MainLayout';
 
 const sessions = [
-    { path: '/Practice-Product-tag-ReactJs', component: Props },
-    { path: '/session2', component: States },
+    { path: '/Practice-Product-tag-ReactJs', tabName: 'Session1', component: Props },
+    { path: '/session2', tabName: 'Session2', component: States },
+    { path: '/session3', tabName: 'Session3', component: States },
+    { path: '/session3', tabName: 'Session3', component: States },
 ];
 
 function App() {
@@ -32,4 +34,5 @@ function App() {
     );
 }
 
+export { sessions };
 export default App;

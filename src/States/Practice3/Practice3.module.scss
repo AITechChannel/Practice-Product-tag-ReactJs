@@ -1,14 +1,16 @@
+@import '../../scss/';
 .container {
     .inner {
+        height: 100vh;
         .photo {
             overflow: hidden;
             max-width: 1200px;
-            height: 100vh;
+            height: 80%;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            margin: 0 auto;
+            margin: 20px auto;
             .control-prev {
                 font-size: 5rem;
                 position: absolute;
@@ -42,48 +44,69 @@
                     cursor: pointer;
                 }
             }
-            .control-close {
-                font-size: 5rem;
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: 9;
-                width: 70px;
-                height: 70px;
-                border-radius: 99px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                &:hover {
-                    background-color: rgba($color: #000000, $alpha: 0.05);
-
-                    cursor: pointer;
-                }
-            }
             .image {
                 position: absolute;
                 opacity: 0;
+                transform: scale(0);
                 transition: all 0.5s ease;
-                max-width: 800px;
-                max-height: 500px;
+                width: 80%;
                 overflow: hidden;
                 img {
                     object-fit: cover;
                     width: 100%;
                 }
+                .control-close {
+                    font-size: 4rem;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 9;
+                    border-radius: 99px;
+                    display: flex;
+                    width: 50px;
+                    height: 50px;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--primary);
+                    &:hover {
+                        background-color: rgba($color: #000000, $alpha: 0.05);
+
+                        cursor: pointer;
+                    }
+                }
             }
             .active {
                 opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .thumbnail {
+            height: 10%;
+            display: flex;
+            justify-content: center;
+
+            img {
+                height: 100%;
             }
         }
     }
 }
-.thumbnail {
-    margin-top: 20px;
-    height: 100px;
+
+.photo-list {
+    margin: 20px 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     img {
-        height: 100%;
+        width: 25%;
+        @include tablet {
+            width: 50%;
+        }
     }
+}
+
+.limit-left,
+.limit-right {
+    opacity: 0.5;
+    cursor: no-drop !important;
 }

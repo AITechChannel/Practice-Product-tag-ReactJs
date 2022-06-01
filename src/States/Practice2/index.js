@@ -13,7 +13,9 @@ function Practice2() {
         <div className={cx('container')}>
             {[...Array(5)].map((e, i) => {
                 return (
-                    <span onClick={() => setRating(i + 1)}>{rating < i + 1 ? <AiOutlineStar /> : <AiFillStar />}</span>
+                    <span key={i} onClick={() => setRating(i + 1)}>
+                        {rating < i + 1 ? <AiOutlineStar /> : <AiFillStar />}
+                    </span>
                 );
             })}
 

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import Button from '~/components/Button';
 import tabs from './data';
 import styles from './Practice6.module.scss';
@@ -19,33 +19,33 @@ function Practice6() {
                 <div className={cx('nav')}>
                     {tabs.map((tab, i) => {
                         return (
-                            <>
+                            <Fragment key={i}>
                                 <Button
                                     mgBottom={10}
                                     width={350}
                                     uppercase
-                                    xl
+                                    md
                                     hoverGrey
                                     activeGreenBg={tabShowIndex == i + 1 ? 'activeGreenBg' : ''}
                                     onClick={() => hanldeActiveTab(tab, i)}
                                 >
                                     {tab.title}
                                 </Button>
-                            </>
+                            </Fragment>
                         );
                     })}
                 </div>
                 <div className={cx('content')}>
                     {tabs.map((tab, i) => {
                         return (
-                            <>
+                            <Fragment key={i}>
                                 {tabShowIndex == i + 1 && (
                                     <>
                                         <h3>{tab.ass}</h3>
                                         <p>{tab.content}</p>
                                     </>
                                 )}
-                            </>
+                            </Fragment>
                         );
                     })}
                 </div>

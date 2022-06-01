@@ -20,21 +20,21 @@ function Practice5() {
                 <div className={cx('nav')}>
                     {tabs.map((tab, i) => {
                         return (
-                            <>
-                                <Button
-                                    icon={tab.titleIcon}
-                                    xl
-                                    hoverGreyCl
-                                    activeGreenCl={tabShowIndex == i + 1 ? 'activeGreenCl' : ''}
-                                    onClick={() => hanldeActiveTab(tab, i)}
-                                ></Button>
-                            </>
+                            <Button
+                                key={i}
+                                icon={tab.titleIcon}
+                                width={200}
+                                md
+                                hoverGreyCl
+                                activeGreenCl={tabShowIndex == i + 1 ? 'activeGreenCl' : ''}
+                                onClick={() => hanldeActiveTab(tab, i)}
+                            ></Button>
                         );
                     })}
                 </div>
                 <div className={cx('content')}>
                     {tabs.map((tab, i) => {
-                        return <>{tabShowIndex == i + 1 && <p>{tab.content}</p>}</>;
+                        return <div key={i}>{tabShowIndex == i + 1 && <p>{tab.content}</p>}</div>;
                     })}
                 </div>
             </div>
