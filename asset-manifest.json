@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Practice-Product-tag-ReactJs/static/css/main.fd38fb27.css",
-    "main.js": "/Practice-Product-tag-ReactJs/static/js/main.3034927d.js",
+    "main.js": "/Practice-Product-tag-ReactJs/static/js/main.004e5687.js",
     "static/js/787.4c9d15e8.chunk.js": "/Practice-Product-tag-ReactJs/static/js/787.4c9d15e8.chunk.js",
     "static/media/avatar.jpg": "/Practice-Product-tag-ReactJs/static/media/avatar.1a91d209e77a72f5d360.jpg",
     "index.html": "/Practice-Product-tag-ReactJs/index.html",
     "main.fd38fb27.css.map": "/Practice-Product-tag-ReactJs/static/css/main.fd38fb27.css.map",
-    "main.3034927d.js.map": "/Practice-Product-tag-ReactJs/static/js/main.3034927d.js.map",
+    "main.004e5687.js.map": "/Practice-Product-tag-ReactJs/static/js/main.004e5687.js.map",
     "787.4c9d15e8.chunk.js.map": "/Practice-Product-tag-ReactJs/static/js/787.4c9d15e8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fd38fb27.css",
-    "static/js/main.3034927d.js"
+    "static/js/main.004e5687.js"
   ]
 }
