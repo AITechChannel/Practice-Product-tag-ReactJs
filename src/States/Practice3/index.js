@@ -11,7 +11,7 @@ function Practice3() {
     const [showPhoto, setShowPhoto] = useState(false);
 
     const [photoList, setPhotoList] = useState([]);
-    console.log(photoList);
+
     useEffect(() => {
         const apiPhotos =
             'https://api.themoviedb.org/3/movie/popular?api_key=718ca6dfce46881e7e3f67da8daa3e77&language=en-US&page=10';
@@ -60,64 +60,46 @@ function Practice3() {
                 </div>
             </div>
 
-            {showPhoto && (
-                <Modal>
-                    <div className={cx('inner')}>
-                        <div className={cx('photo')}>
-                            <span className={cx('control-prev', `${photoIndex == 0 ? 'limit-left' : ''}`)}>
-                                <FcPrevious onClick={hanldePrev} />
-                            </span>
+            <Modal show={showPhoto ? 'show' : ''}>
+                <div className={cx('inner')}>
+                    <div className={cx('photo')}>
+                        <span className={cx('control-prev', `${photoIndex == 0 ? 'limit-left' : ''}`)}>
+                            <FcPrevious onClick={hanldePrev} />
+                        </span>
 
-                            {photoList.map((e, i) => {
-                                return (
-                                    <div className={cx('image', `${photoIndex == i ? 'active' : ''}`)}>
-                                        <img
-                                            src={`http://image.tmdb.org/t/p/original/${photoList[photoIndex].backdrop_path}`}
-                                            className={cx(``)}
-                                        />
-                                        <span className={cx('control-close')}>
-                                            <AiOutlineClose onClick={() => setShowPhoto(false)} />
-                                        </span>
-                                    </div>
-                                );
-                            })}
-                            <span className={cx('control-next', `${photoIndex == 19 ? 'limit-right' : ''}`)}>
-                                <FcNext onClick={hanldeNext} />
-                            </span>
-                        </div>
-                        <div className={cx('thumbnail')}>
-                            {photoList.map((e, i) => {
-                                return (
-                                    <Fragment key={i}>
-                                        <img
-                                            src={`http://image.tmdb.org/t/p/original/${e.backdrop_path}`}
-                                            onClick={() => setPhotoIndex(i)}
-                                        />
-                                    </Fragment>
-                                );
-                            })}
-                        </div>
+                        {photoList.map((e, i) => {
+                            return (
+                                <div className={cx('image', `${photoIndex == i ? 'active' : ''}`)}>
+                                    <img
+                                        src={`http://image.tmdb.org/t/p/original/${photoList[photoIndex].backdrop_path}`}
+                                        className={cx(``)}
+                                    />
+                                    <span className={cx('control-close')}>
+                                        <AiOutlineClose onClick={() => setShowPhoto(false)} />
+                                    </span>
+                                </div>
+                            );
+                        })}
+                        <span className={cx('control-next', `${photoIndex == 19 ? 'limit-right' : ''}`)}>
+                            <FcNext onClick={hanldeNext} />
+                        </span>
                     </div>
-                </Modal>
-            )}
+                    <div className={cx('thumbnail')}>
+                        {photoList.map((e, i) => {
+                            return (
+                                <Fragment key={i}>
+                                    <img
+                                        src={`http://image.tmdb.org/t/p/original/${e.backdrop_path}`}
+                                        onClick={() => setPhotoIndex(i)}
+                                    />
+                                </Fragment>
+                            );
+                        })}
+                    </div>
+                </div>
+            </Modal>
         </div>
     );
 }
 
 export default Practice3;
-
-{
-    /* {ar.map((e, i) => {
-                        return (
-                            <Fragment key={i}>
-                                <img
-                                    src={`http://foundry.mediumra.re/img/cover${e}.jpg`}
-                                    onClick={() => {
-                                        setPhotoIndex(e);
-                                        setShowPhoto(true);
-                                    }}
-                                />
-                            </Fragment>
-                        );
-                    })} */
-}

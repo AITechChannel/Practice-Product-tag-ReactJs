@@ -19,62 +19,58 @@ function Header() {
 
     const [showMenu, setShowMenu] = useState(false);
 
-    console.log(sessions);
-    console.log(pathname);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
-                <div className={cx('logo')}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" />
+                <div className={cx('header')}>
+                    <div className={cx('logo')}>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" />
 
-                    <h1>React JS</h1>
+                        <h1>React JS</h1>
+                    </div>
+                    <ul className={cx('navbar-pc')}>
+                        {sessions.map((item, i) => (
+                            <li key={i} className={cx(`${i == active ? 'active' : ''}`)}>
+                                <Link to={item.path}>{item.tabName}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className={cx('auth')}>
+                        <a href="https://www.facebook.com/tuananhdoan.195">
+                            <img src={Avatar} />
+                            <div>
+                                <p>Tuananh</p>
+                                <p>Doan</p>
+                            </div>
+                        </a>
+                    </div>
+                    {!showMenu && (
+                        <span className={cx('menu-open')} onClick={() => setShowMenu(true)}>
+                            <CgMenu />
+                        </span>
+                    )}
+                    {showMenu && (
+                        <span className={cx('menu-close')} onClick={() => setShowMenu(false)}>
+                            <MdClose />
+                        </span>
+                    )}
                 </div>
-                <ul className={cx('navbar')}>
-                    {sessions.map((item, i) => (
-                        <li key={i} className={cx(`${i == active ? 'active' : ''}`)}>
-                            <Link to={item.path}>{item.tabName}</Link>
-                        </li>
-                    ))}
-                </ul>
-                <div className={cx('auth')}>
-                    <a href="https://www.facebook.com/tuananhdoan.195">
-                        <img src={Avatar} />
-                        <div>
-                            <p>Tuananh</p>
-                            <p>Doan</p>
-                        </div>
-                    </a>
-                </div>
-                {!showMenu && (
-                    <span className={cx('menu-open')} onClick={() => setShowMenu(true)}>
-                        <CgMenu />
-                    </span>
-                )}
-                {showMenu && (
-                    <span className={cx('menu-close')} onClick={() => setShowMenu(false)}>
-                        <MdClose />
-                    </span>
-                )}
-                {showMenu && (
-                    <Modal>
-                        <div className={cx('sub-menu')}>
-                            <ul className={cx('navbar', 'show')}>
-                                {sessions.map((item, i) => (
-                                    <li
-                                        key={i}
-                                        className={cx(`${i == active ? 'active' : ''}`)}
-                                        onClick={() => {
-                                            setShowMenu(false);
-                                        }}
-                                    >
-                                        <Link to={item.path}>{item.tabName}</Link>
-                                        {console.log(item)}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </Modal>
-                )}
+
+                <Modal showHeader show={showMenu ? 'show' : ''}>
+                    <ul className={cx('navbar-mobile', `${showMenu ? 'topDown' : ''}`)}>
+                        {sessions.map((item, i) => (
+                            <li
+                                key={i}
+                                className={cx(`${i == active ? 'active' : ''}`)}
+                                onClick={() => {
+                                    setShowMenu(false);
+                                }}
+                            >
+                                <Link to={item.path}>{item.tabName}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </Modal>
             </div>
         </div>
     );

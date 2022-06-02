@@ -5,6 +5,16 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 9999;
+    z-index: 99;
     transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.showHeader {
+    top: 70px;
+}
+
+.show {
+    opacity: 1;
+    visibility: visible;
 }
