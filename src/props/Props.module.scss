@@ -3,7 +3,8 @@
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    padding-top: 100px;
+    padding: 100px 30px 0 30px;
+
     @include mobile {
         padding: 90px 16px 0 16px;
     }
