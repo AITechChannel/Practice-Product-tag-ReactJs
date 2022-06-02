@@ -23,7 +23,7 @@ function Practice4() {
                                 <Button
                                     width={200}
                                     uppercase
-                                    md
+                                    xl
                                     hoverGrey
                                     activeGreenBg={tabShowIndex == i + 1 ? 'activeGreenBg' : ''}
                                     onClick={() => hanldeActiveTab(tab, i)}

@@ -22,7 +22,7 @@ function States() {
             {practices.map((e, i) => {
                 return (
                     <Fragment key={i}>
-                        <h1>{e.title}</h1>
+                        <h1 className={cx('title')}>{e.title}</h1>
                         {e.component}
                     </Fragment>
                 );

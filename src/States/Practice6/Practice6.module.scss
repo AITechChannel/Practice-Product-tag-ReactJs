@@ -4,10 +4,12 @@
         display: flex;
         .nav {
             margin: 10px 0 20px 0;
+            margin-right: 20px;
             @include tablet {
-                margin-right: 20px;
+                margin: 0 20px 0 0;
                 button {
-                    width: 200px !important;
+                    margin-bottom: 6px;
+                    width: 150px !important;
                 }
             }
         }

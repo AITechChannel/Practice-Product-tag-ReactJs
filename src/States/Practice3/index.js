@@ -1,45 +1,56 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { Fragment, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
-import styles from './Practice3.module.scss';
-
-import { AiFillStar, AiOutlineStar, AiOutlineClose } from 'react-icons/ai';
-import { FcPrevious, FcNext } from 'react-icons/fc';
-
+import React, { Fragment, useEffect, useRef, useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
+import { FcNext, FcPrevious } from 'react-icons/fc';
 import Modal from '~/components/Modal';
+import styles from './Practice3.module.scss';
 
 const cx = classNames.bind(styles);
 function Practice3() {
-    const [photoIndex, setPhotoIndex] = useState(5);
+    const [photoIndex, setPhotoIndex] = useState(0);
     const [showPhoto, setShowPhoto] = useState(false);
 
+    const [photoList, setPhotoList] = useState([]);
+    console.log(photoList);
+    useEffect(() => {
+        const apiPhotos =
+            'https://api.themoviedb.org/3/movie/popular?api_key=718ca6dfce46881e7e3f67da8daa3e77&language=en-US&page=10';
+        const getphotos = async () => {
+            try {
+                const res = await fetch(apiPhotos);
+                const data = await res.json();
+                setPhotoList(data.results);
+            } catch (error) {
+                console.log('Error');
+            }
+        };
+        getphotos();
+    }, []);
+
     const hanldePrev = () => {
-        if (photoIndex > 5) {
+        if (photoIndex > 0) {
             setPhotoIndex(photoIndex - 1);
         }
     };
     const hanldeNext = () => {
-        if (photoIndex < 8) {
+        if (photoIndex < 19) {
             setPhotoIndex(photoIndex + 1);
         }
     };
 
     const modalRef = useRef();
 
-    console.log(modalRef);
-
-    const ar = [5, 6, 7, 8];
     return (
         <div ref={modalRef} className={cx('container')}>
             <div className={cx('photo')}>
                 <div className={cx('photo-list')}>
-                    {ar.map((e, i) => {
+                    {photoList.map((e, i) => {
                         return (
                             <Fragment key={i}>
                                 <img
-                                    src={`http://foundry.mediumra.re/img/cover${e}.jpg`}
+                                    src={`http://image.tmdb.org/t/p/original/${e.backdrop_path}`}
                                     onClick={() => {
-                                        setPhotoIndex(e);
+                                        setPhotoIndex(i);
                                         setShowPhoto(true);
                                     }}
                                 />
@@ -53,30 +64,34 @@ function Practice3() {
                 <Modal>
                     <div className={cx('inner')}>
                         <div className={cx('photo')}>
-                            <span className={cx('control-prev', `${photoIndex == 5 ? 'limit-left' : ''}`)}>
+                            <span className={cx('control-prev', `${photoIndex == 0 ? 'limit-left' : ''}`)}>
                                 <FcPrevious onClick={hanldePrev} />
                             </span>
-                            {ar.map((e, i) => {
+
+                            {photoList.map((e, i) => {
                                 return (
-                                    <div key={i} className={cx('image', `${photoIndex == e ? 'active' : ''}`)}>
-                                        <img src={`http://foundry.mediumra.re/img/cover${e}.jpg`} className={cx(``)} />
+                                    <div className={cx('image', `${photoIndex == i ? 'active' : ''}`)}>
+                                        <img
+                                            src={`http://image.tmdb.org/t/p/original/${photoList[photoIndex].backdrop_path}`}
+                                            className={cx(``)}
+                                        />
                                         <span className={cx('control-close')}>
                                             <AiOutlineClose onClick={() => setShowPhoto(false)} />
                                         </span>
                                     </div>
                                 );
                             })}
-                            <span className={cx('control-next', `${photoIndex == 8 ? 'limit-right' : ''}`)}>
+                            <span className={cx('control-next', `${photoIndex == 19 ? 'limit-right' : ''}`)}>
                                 <FcNext onClick={hanldeNext} />
                             </span>
                         </div>
                         <div className={cx('thumbnail')}>
-                            {ar.map((e, i) => {
+                            {photoList.map((e, i) => {
                                 return (
                                     <Fragment key={i}>
                                         <img
-                                            src={`http://foundry.mediumra.re/img/cover${e}.jpg`}
-                                            onClick={() => setPhotoIndex(e)}
+                                            src={`http://image.tmdb.org/t/p/original/${e.backdrop_path}`}
+                                            onClick={() => setPhotoIndex(i)}
                                         />
                                     </Fragment>
                                 );
@@ -90,3 +105,19 @@ function Practice3() {
 }
 
 export default Practice3;
+
+{
+    /* {ar.map((e, i) => {
+                        return (
+                            <Fragment key={i}>
+                                <img
+                                    src={`http://foundry.mediumra.re/img/cover${e}.jpg`}
+                                    onClick={() => {
+                                        setPhotoIndex(e);
+                                        setShowPhoto(true);
+                                    }}
+                                />
+                            </Fragment>
+                        );
+                    })} */
+}

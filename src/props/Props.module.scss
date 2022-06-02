@@ -1,7 +1,12 @@
+@import '../scss/';
+
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 100px;
+    @include mobile {
+        padding: 100px 16px 0 16px;
+    }
 }
 .title {
     margin: 16px 0;

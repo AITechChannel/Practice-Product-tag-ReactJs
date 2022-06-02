@@ -4,6 +4,9 @@ import styles from './Header.module.scss';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { VscMenu, VscChromeClose } from 'react-icons/vsc';
+import { CgMenu } from 'react-icons/cg';
+import { MdClose } from 'react-icons/md';
+
 import Modal from '../Modal';
 import { Link, useLocation } from 'react-router-dom';
 import { sessions } from '~/App';
@@ -15,6 +18,9 @@ function Header() {
     const active = sessions.findIndex((e) => e.path === pathname);
 
     const [showMenu, setShowMenu] = useState(false);
+
+    console.log(sessions);
+    console.log(pathname);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
@@ -39,9 +45,16 @@ function Header() {
                         </div>
                     </a>
                 </div>
-                <span className={cx('menu-open')} onClick={() => setShowMenu(true)}>
-                    <VscMenu />
-                </span>
+                {!showMenu && (
+                    <span className={cx('menu-open')} onClick={() => setShowMenu(true)}>
+                        <CgMenu />
+                    </span>
+                )}
+                {showMenu && (
+                    <span className={cx('menu-close')} onClick={() => setShowMenu(false)}>
+                        <MdClose />
+                    </span>
+                )}
                 {showMenu && (
                     <Modal>
                         <div className={cx('sub-menu')}>
@@ -59,9 +72,6 @@ function Header() {
                                     </li>
                                 ))}
                             </ul>
-                            <span className={cx('menu-close')} onClick={() => setShowMenu(false)}>
-                                <VscChromeClose />
-                            </span>
                         </div>
                     </Modal>
                 )}

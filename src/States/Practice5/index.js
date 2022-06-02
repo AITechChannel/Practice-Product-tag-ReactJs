@@ -24,7 +24,7 @@ function Practice5() {
                                 key={i}
                                 icon={tab.titleIcon}
                                 width={200}
-                                md
+                                xxl
                                 hoverGreyCl
                                 activeGreenCl={tabShowIndex == i + 1 ? 'activeGreenCl' : ''}
                                 onClick={() => hanldeActiveTab(tab, i)}
