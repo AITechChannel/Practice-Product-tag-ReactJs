@@ -1,0 +1,19 @@
+.container {
+    .cd {
+        border-radius: 999px;
+        overflow: hidden;
+        display: inline-block;
+        position: relative;
+        .circle {
+            position: absolute;
+            background-color: #170f23;
+            width: 50px;
+            height: 50px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 2;
+            top: 50%;
+            border-radius: 999px;
+        }
+    }
+}
