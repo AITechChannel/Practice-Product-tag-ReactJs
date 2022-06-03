@@ -1,16 +1,14 @@
-import React from 'react';
-import styles from './Header.module.scss';
-
-import { useState } from 'react';
+import Modal from '~/components/Modal';
 import classNames from 'classnames/bind';
-import { VscMenu, VscChromeClose } from 'react-icons/vsc';
+import { easeBounceInOut } from 'd3-ease';
+import React, { useState } from 'react';
 import { CgMenu } from 'react-icons/cg';
 import { MdClose } from 'react-icons/md';
-
-import Modal from '../Modal';
 import { Link, useLocation } from 'react-router-dom';
+import { animated, useTransition } from 'react-spring';
 import { sessions } from '~/App';
 import Avatar from '~/assets/images/avatar.jpg';
+import styles from './Header.module.scss';
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -18,6 +16,13 @@ function Header() {
     const active = sessions.findIndex((e) => e.path === pathname);
 
     const [showMenu, setShowMenu] = useState(false);
+
+    const translateYMenu = useTransition(showMenu, {
+        from: { translateY: -210 },
+        enter: { translateY: 70 },
+        leave: { translateY: -210 },
+        config: { duration: 200, easing: easeBounceInOut },
+    });
 
     return (
         <div className={cx('wrapper')}>
@@ -55,22 +60,30 @@ function Header() {
                         </span>
                     )}
                 </div>
-
-                <Modal showHeader show={showMenu ? 'show' : ''}>
-                    <ul className={cx('navbar-mobile', `${showMenu ? 'topDown' : ''}`)}>
-                        {sessions.map((item, i) => (
-                            <li
-                                key={i}
-                                className={cx(`${i == active ? 'active' : ''}`)}
-                                onClick={() => {
-                                    setShowMenu(false);
-                                }}
-                            >
-                                <Link to={item.path}>{item.tabName}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </Modal>
+                <>
+                    {translateYMenu((style, item) =>
+                        item ? (
+                            // modal default opacity transition
+                            <Modal showModal={showMenu}>
+                                <animated.ul style={style} className={cx('navbar-mobile')}>
+                                    {sessions.map((item, i) => (
+                                        <li
+                                            key={i}
+                                            className={cx(`${i == active ? 'active' : ''}`)}
+                                            onClick={() => {
+                                                setShowMenu(false);
+                                            }}
+                                        >
+                                            <Link to={item.path}>{item.tabName}</Link>
+                                        </li>
+                                    ))}
+                                </animated.ul>
+                            </Modal>
+                        ) : (
+                            ''
+                        ),
+                    )}
+                </>
             </div>
         </div>
     );

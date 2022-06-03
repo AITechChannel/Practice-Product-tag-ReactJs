@@ -6,15 +6,8 @@
     right: 0;
     bottom: 0;
     z-index: 99;
-    transition: all 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
 }
 .showHeader {
     top: 70px;
-}
-
-.show {
-    opacity: 1;
-    visibility: visible;
 }
