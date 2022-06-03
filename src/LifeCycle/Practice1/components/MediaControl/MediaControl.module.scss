@@ -1,9 +1,21 @@
 .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     .cd {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 999px;
         overflow: hidden;
-        display: inline-block;
         position: relative;
+        margin-bottom: 20px;
+
+        img {
+            border-radius: 999px;
+        }
+
         .circle {
             position: absolute;
             background-color: #170f23;
@@ -15,5 +27,29 @@
             top: 50%;
             border-radius: 999px;
         }
+    }
+    .cd.rotateCD {
+        -webkit-animation: rotating 30s linear infinite;
+        -moz-animation: rotating 30s linear infinite;
+        -ms-animation: rotating 30s linear infinite;
+        -o-animation: rotating 30s linear infinite;
+        animation: rotating 30s linear infinite;
+    }
+}
+
+@keyframes rotating {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }

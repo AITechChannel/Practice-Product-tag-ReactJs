@@ -1,38 +1,57 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './Media.module.scss';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const cx = classNames.bind(styles);
-function Media() {
+
+function Media({ number, img, song, singer, ablum, time, onPlay, onPause, playIndex, index, playStatus }) {
     return (
         <div className={cx('container')}>
             <div className={cx('left')}>
-                <span className={cx('number')}>1</span>
+                <span className={cx('number')}>{number}</span>
                 <div className={cx('photo')}>
                     <div className={cx('action')}>
-                        <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/f/d/4/bfd49cf4cb9e6fc7180c67522f22aefb.jpg"></img>
+                        <img src={img}></img>
                         <div className={cx('overlay-icon')}>
-                            <span className={cx('icon-play')}>
-                                <FontAwesomeIcon icon={faPlay} />
-                            </span>
+                            <>
+                                {playIndex !== index && playStatus == false ? (
+                                    <span className={cx('icon-play')} onClick={onPlay}>
+                                        <FontAwesomeIcon icon={faPlay} />
+                                    </span>
+                                ) : (
+                                    <>
+                                        {playIndex == index && playStatus == true ? (
+                                            <span className={cx('icon-play')} onClick={onPause}>
+                                                <i className={cx('icon-play')}></i>
+                                            </span>
+                                        ) : (
+                                            <span className={cx('icon-play')} onClick={onPlay}>
+                                                <FontAwesomeIcon icon={faPlay} />
+                                            </span>
+                                        )}
+                                    </>
+                                )}
+                            </>
+
+                            {console.log(playIndex)}
                         </div>
                     </div>
                 </div>
                 <div className={cx('content')}>
-                    <h3>Ten bai hat</h3>
+                    <h3>{song}</h3>
                     <span>
-                        <a href="">Ten ca sy</a>
+                        <a href="">{singer}</a>
                     </span>
                 </div>
             </div>
             <div className={cx('mid')}>
                 <span className={cx('ablum')}>
-                    <a href="">ablum info</a>
+                    <a href="">{ablum}</a>
                 </span>
             </div>
             <div className={cx('right')}>
-                <span className={cx('duration')}>04:40</span>
+                <span className={cx('duration')}>{time}</span>
             </div>
         </div>
     );
