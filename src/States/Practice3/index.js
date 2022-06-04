@@ -15,9 +15,9 @@ function Practice3() {
     const [photoList, setPhotoList] = useState([]);
 
     const scaleImg = useTransition(showPhoto && photoIndex, {
-        from: { scale: 0 },
+        from: { scale: 0.5 },
         enter: { scale: 1 },
-        leave: { scale: 0 },
+        leave: { scale: 0.5 },
         config: { duration: 200, easing: easeBounceInOut },
     });
 
