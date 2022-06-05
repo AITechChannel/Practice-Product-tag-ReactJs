@@ -1,18 +1,22 @@
+@import '../../../../scss/';
 .container {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #170f23;
+    background-color: #f0f0f0;
     height: 80px;
     color: #827f87;
-    border-bottom: 1px solid #3a3a3a;
+    border-bottom: 1px solid #bbbbbb;
     &:hover {
-        background-color: #2f2739;
+        background-color: #e0e0e0;
     }
 }
 
 .left {
+    @include mobile {
+        flex: 1;
+    }
     height: 100%;
     display: flex;
     align-items: center;
@@ -67,7 +71,7 @@
         flex-direction: column;
         h3 {
             font-size: 1.8rem;
-            color: #ffff;
+            color: #333;
         }
     }
 }
@@ -77,6 +81,9 @@
 }
 .mid {
     flex: 1;
+    @include mobile {
+        display: none;
+    }
 }
 .right {
     display: flex;

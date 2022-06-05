@@ -1,13 +1,14 @@
-import React from 'react';
-import classNames from 'classnames/bind';
-import styles from './Media.module.scss';
-import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames/bind';
+import { memo } from 'react';
+import styles from './AudioTag.module.scss';
 const cx = classNames.bind(styles);
 
-function Media({ number, img, song, singer, ablum, time, onPlay, onPause, playIndex, index, playStatus }) {
+function AudioTag({ number, img, song, singer, ablum, time, onPlay, onPause, playIndex, index, playStatus }) {
     return (
         <div className={cx('container')}>
+            {console.log('render audio tag')}
             <div className={cx('left')}>
                 <span className={cx('number')}>{number}</span>
                 <div className={cx('photo')}>
@@ -33,8 +34,6 @@ function Media({ number, img, song, singer, ablum, time, onPlay, onPause, playIn
                                     </>
                                 )}
                             </>
-
-                            {console.log(playIndex)}
                         </div>
                     </div>
                 </div>
@@ -57,4 +56,4 @@ function Media({ number, img, song, singer, ablum, time, onPlay, onPause, playIn
     );
 }
 
-export default Media;
+export default memo(AudioTag);

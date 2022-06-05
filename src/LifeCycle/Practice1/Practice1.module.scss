@@ -1,22 +1,40 @@
+@import '../../scss/';
 .container {
     display: flex;
     justify-content: center;
     width: 100%;
 
+    @include tablet {
+        flex-direction: column-reverse;
+    }
+
     .music-list {
-        border-radius: 10px;
+        border-radius: 15px;
+        box-shadow: 2px 2px 2px 2px rgba($color: #000000, $alpha: 0.1);
         overflow: hidden;
         flex: 1;
         display: flex;
         flex-direction: column;
         margin-right: 30px;
+        @include tablet {
+            width: 100%;
+            margin-bottom: 20px;
+        }
     }
     .music-control {
+        border-radius: 15px;
+        box-shadow: 2px 2px 2px 2px rgba($color: #000000, $alpha: 0.1);
+        height: 480px;
         width: 30%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        @include tablet {
+            width: 100%;
+            margin-bottom: 20px;
+            height: 440px;
+        }
     }
 }
 

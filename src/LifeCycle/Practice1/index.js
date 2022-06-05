@@ -1,44 +1,45 @@
 import classNames from 'classnames/bind';
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
+import AudioTag from './components/AudioTag';
 import CustomMediaPlayer from './components/CustomMediaPlayer';
 import playlistData from './components/data';
-import Media from './components/Media';
 import MediaControl from './components/MediaControl';
 import styles from './Practice1.module.scss';
 
 const cx = classNames.bind(styles);
 
 function Pracice1() {
-    const defaultUrl =
-        'https://mp3-s1-zmp3.zmdcdn.me/88be6f81d7c03e9e67d1/6553320916969453382?authen=exp=1654444233~acl=/88be6f81d7c03e9e67d1/*~hmac=a95bcbbdca4c3c042a9eb90832048a32&fs=MTY1NDI3MTQzMzmUsICwOXx3ZWJWNnwwfDEdUngNTIdUngNTgdUngOTI';
+    const defaultUrlAudio =
+        'https://vnso-zn-16-tf-mp3-s1-zmp3.zmdcdn.me/3bd3a4570816e148b807/2353244868757319482?authen=exp=1654610231~acl=/3bd3a4570816e148b807/*~hmac=efc20ced1d9f2b112dfb92568cff68c9&fs=MTY1NDQzNzQzMTA4M3x3ZWJWNnwwfDE3MS4yNTEdUngMjMyLjkw';
 
+    const defaultUrlImage =
+        'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/1/9/d/8/19d8b42b0aa5a00084d29c06a62556c7.jpg';
+    const reactPlayerRef = useRef();
+
+    const [urlImage, setUrlImage] = useState(defaultUrlImage);
     const [play, setPlay] = useState(false);
-    const [urlAudio, setUrlAudio] = useState(defaultUrl);
+    const [urlAudio, setUrlAudio] = useState(defaultUrlAudio);
     const [playIndex, setPlayIndex] = useState('');
-    console.log(playIndex);
 
     const [duration, setDuration] = useState('');
     const [durationSeconds, setDurationSeconds] = useState('');
 
-    const [played, setPlayed] = useState('0:00');
-    const reactPlayerRef = useRef();
-
+    const [played, setPlayed] = useState('');
     const [volume, setVolume] = useState(0.2);
 
     const [muted, setMuted] = useState(false);
 
-    const hanldePlay = (e, i) => {
+    const handlePlay = useCallback((e, i) => {
         setPlay(true);
         setUrlAudio(playlistData[i].url);
+        setUrlImage(playlistData[i].img);
         setPlayIndex(i);
-    };
+    }, []);
 
-    const hanldePause = (e, i) => {
+    const handlePause = useCallback((e, i) => {
         setPlay(false);
-        // setUrlAudio(e.url);
-        // setPlayIndex(i);
-    };
+    }, []);
 
     const handleDuration = (duration) => {
         const minutes = Math.floor(duration / 60);
@@ -61,12 +62,16 @@ function Pracice1() {
     };
 
     const handleNext = () => {
-        setUrlAudio(playlistData[playIndex + 1].url);
-        setPlayIndex(playIndex + 1);
+        if (playIndex < 5) {
+            setUrlAudio(playlistData[playIndex + 1].url);
+            setUrlImage(playlistData[playIndex + 1].img);
+            setPlayIndex(playIndex + 1);
+        }
     };
     const handlePrev = () => {
         if (playIndex > 0) {
             setUrlAudio(playlistData[playIndex - 1].url);
+            setUrlImage(playlistData[playIndex - 1].img);
             setPlayIndex(playIndex - 1);
         }
     };
@@ -74,15 +79,15 @@ function Pracice1() {
         <div className={cx('container')}>
             <div className={cx('music-list')}>
                 {playlistData.map((e, i) => (
-                    <Media
+                    <AudioTag
                         number={e.number}
                         img={e.img}
                         song={e.song}
                         singer={e.singer}
                         ablum={e.ablum}
                         time={e.time}
-                        onPlay={() => hanldePlay(e, i)}
-                        onPause={() => hanldePause(e, i)}
+                        onPlay={() => handlePlay(e, i)}
+                        onPause={() => handlePause(e, i)}
                         playIndex={playIndex}
                         index={i}
                         playStatus={play}
@@ -90,7 +95,7 @@ function Pracice1() {
                 ))}
             </div>
             <div className={cx('music-control')}>
-                <MediaControl rotateCD={play}>
+                <MediaControl rotateCD={play} image={urlImage}>
                     <ReactPlayer
                         ref={reactPlayerRef}
                         className={cx('react-player')}
@@ -113,7 +118,7 @@ function Pracice1() {
                         volume={volume}
                         muted={muted}
                     />
-
+                    {console.log(played)}
                     <CustomMediaPlayer
                         ReactPlayer={reactPlayerRef.current}
                         onPlayPause={() => setPlay(!play)}
