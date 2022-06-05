@@ -3,6 +3,8 @@ import {
     faCirclePause,
     faCirclePlay,
     faForwardStep,
+    faRepeat,
+    faShuffle,
     faVolumeHigh,
     faVolumeXmark,
 } from '@fortawesome/free-solid-svg-icons';
@@ -25,6 +27,8 @@ function CustomMediaPlayer({
     onMuted,
     onNext,
     onPrev,
+    loop,
+    onLoop,
 }) {
     const handleOnClickSeek = (e) => {
         const percentSeek = e.target.value / 100;
@@ -45,6 +49,9 @@ function CustomMediaPlayer({
         <div>
             <div className={cx('player-container')}>
                 <div className={cx('main')}>
+                    <button className={cx('random')}>
+                        <FontAwesomeIcon icon={faShuffle} />
+                    </button>
                     <button className={cx('prev')} onClick={onPrev}>
                         <FontAwesomeIcon icon={faBackwardStep} />
                     </button>
@@ -57,6 +64,9 @@ function CustomMediaPlayer({
                     </button>
                     <button className={cx('next')} onClick={onNext}>
                         <FontAwesomeIcon icon={faForwardStep} />
+                    </button>
+                    <button className={cx('repeat', `${loop ? 'active' : ''}`)} onClick={onLoop}>
+                        <FontAwesomeIcon icon={faRepeat} />
                     </button>
                 </div>
 

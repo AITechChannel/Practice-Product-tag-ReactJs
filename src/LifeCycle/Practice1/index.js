@@ -29,6 +29,8 @@ function Pracice1() {
 
     const [muted, setMuted] = useState(false);
 
+    const [loop, setLoop] = useState(false);
+
     const handlePlay = useCallback((e, i) => {
         setPlay(true);
         setUrlAudio(playlistData[i].url);
@@ -116,6 +118,7 @@ function Pracice1() {
                         onSeek={(e) => console.log('seek', e)}
                         volume={volume}
                         muted={muted}
+                        loop={loop}
                     />
                     {console.log(played)}
                     <CustomMediaPlayer
@@ -131,6 +134,8 @@ function Pracice1() {
                         onMuted={() => handleMuted()}
                         onNext={() => handleNext()}
                         onPrev={() => handlePrev()}
+                        onLoop={() => setLoop(!loop)}
+                        loop={loop}
                     />
                 </MediaControl>
             </div>
