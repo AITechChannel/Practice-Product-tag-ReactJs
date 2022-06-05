@@ -10,8 +10,7 @@ import styles from './Practice1.module.scss';
 const cx = classNames.bind(styles);
 
 function Pracice1() {
-    const defaultUrlAudio =
-        'https://vnso-zn-16-tf-mp3-s1-zmp3.zmdcdn.me/3bd3a4570816e148b807/2353244868757319482?authen=exp=1654610231~acl=/3bd3a4570816e148b807/*~hmac=efc20ced1d9f2b112dfb92568cff68c9&fs=MTY1NDQzNzQzMTA4M3x3ZWJWNnwwfDE3MS4yNTEdUngMjMyLjkw';
+    const defaultUrlAudio = 'https://tainhac123.com/listen/thuong-em-chau-khai-phong-ft-acv.zMcUoKLMFctX.html';
 
     const defaultUrlImage =
         'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/1/9/d/8/19d8b42b0aa5a00084d29c06a62556c7.jpg';
