@@ -1,3 +1,5 @@
+@import '../../../../scss/';
+
 .container {
     height: 100%;
     flex: 1;
@@ -7,7 +9,7 @@
     justify-content: center;
     padding: 20px;
     border-radius: 15px;
-    background-color: #f0f0f0;
+    background-color: $bg-zing;
     .cd {
         display: flex;
         justify-content: center;
@@ -23,7 +25,7 @@
 
         .circle {
             position: absolute;
-            background-color: #f0f0f0;
+            background-color: $white-light;
             box-shadow: 0px 0px 50px 10px rgba($color: #000000, $alpha: 0.4);
             width: 50px;
             height: 50px;

@@ -4,12 +4,12 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #f0f0f0;
+    background-color: $bg-zing;
     height: 80px;
-    color: #827f87;
-    border-bottom: 1px solid #bbbbbb;
+    color: $text-light;
+    border-bottom: 1px solid $grey;
     &:hover {
-        background-color: #e0e0e0;
+        background-color: $grey;
     }
 }
 
@@ -71,7 +71,7 @@
         flex-direction: column;
         h3 {
             font-size: 1.8rem;
-            color: #333;
+            color: $white-light;
         }
     }
 }

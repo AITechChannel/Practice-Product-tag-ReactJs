@@ -4,21 +4,21 @@
     display: flex;
     flex-direction: column;
     button {
-        background-color: #f0f0f0;
-        color: #686868;
+        background-color: $bg-zing;
+        color: $white-light;
     }
     .main {
         display: flex;
         justify-content: center;
-        font-size: 6rem;
+        font-size: 5rem;
 
         .prev {
             margin-right: 30px;
-            font-size: 4rem;
+            font-size: 3.5rem;
         }
         .next {
             margin-left: 30px;
-            font-size: 4rem;
+            font-size: 3.5rem;
         }
 
         .random {
@@ -31,7 +31,7 @@
             font-size: 2rem;
         }
         .active {
-            color: #20bbe2;
+            color: $primary;
         }
     }
     .more {
@@ -55,8 +55,8 @@
                 position: absolute;
                 transform: rotate(-90deg) translateX(50%);
                 bottom: 20px;
-                right: -30px;
-                width: 80px;
+                right: -24px;
+                width: 70px;
                 display: none;
             }
             .mute {
@@ -85,7 +85,7 @@
         }
     }
     input {
-        background-color: #f0f0f0;
+        background-color: $bg-zing;
     }
     input[type='range'] {
         -webkit-appearance: none;
@@ -97,7 +97,7 @@
     }
     input[type='range']::-webkit-slider-runnable-track {
         width: 100%;
-        height: 12.8px;
+        height: 6px;
         cursor: pointer;
         animate: 0.2s;
         box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
@@ -108,13 +108,13 @@
     input[type='range']::-webkit-slider-thumb {
         box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
         border: 0px solid #000000;
-        height: 20px;
-        width: 39px;
-        border-radius: 7px;
-        background: #61dbfb;
+        height: 16px;
+        width: 16px;
+        border-radius: 12px;
+        background: $primary;
         cursor: pointer;
         -webkit-appearance: none;
-        margin-top: -3.6px;
+        margin-top: -5px;
     }
     input[type='range']:focus::-webkit-slider-runnable-track {
         background: #cdcdcd;
