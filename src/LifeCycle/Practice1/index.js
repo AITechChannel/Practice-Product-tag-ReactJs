@@ -17,8 +17,9 @@ function Pracice1() {
     const reactPlayerRef = useRef();
 
     const [urlImage, setUrlImage] = useState(defaultUrlImage);
-    const [play, setPlay] = useState(false);
     const [urlAudio, setUrlAudio] = useState(defaultUrlAudio);
+
+    const [play, setPlay] = useState(false);
     const [playIndex, setPlayIndex] = useState('');
 
     const [duration, setDuration] = useState('');
@@ -28,8 +29,9 @@ function Pracice1() {
     const [volume, setVolume] = useState(0.2);
 
     const [muted, setMuted] = useState(false);
-
     const [loop, setLoop] = useState(false);
+
+    const [random, setRandom] = useState(false);
 
     const handlePlay = useCallback((e, i) => {
         setPlay(true);
@@ -67,6 +69,7 @@ function Pracice1() {
             setUrlAudio(playlistData[playIndex + 1].url);
             setUrlImage(playlistData[playIndex + 1].img);
             setPlayIndex(playIndex + 1);
+            setPlay(true);
         }
     };
     const handlePrev = () => {
@@ -74,6 +77,24 @@ function Pracice1() {
             setUrlAudio(playlistData[playIndex - 1].url);
             setUrlImage(playlistData[playIndex - 1].img);
             setPlayIndex(playIndex - 1);
+            setPlay(true);
+        }
+    };
+
+    const handleEnded = () => {
+        if (!random) {
+            setUrlAudio(playlistData[playIndex + 1].url);
+            setUrlImage(playlistData[playIndex + 1].img);
+            setPlayIndex(playIndex + 1);
+            setPlay(true);
+        }
+        if (random) {
+            const randomNumber = Math.floor(Math.random() * 4);
+            console.log(randomNumber);
+            setUrlAudio(playlistData[randomNumber + 1].url);
+            setUrlImage(playlistData[randomNumber + 1].img);
+            setPlayIndex(randomNumber + 1);
+            setPlay(true);
         }
     };
     return (
@@ -119,8 +140,8 @@ function Pracice1() {
                         volume={volume}
                         muted={muted}
                         loop={loop}
+                        onEnded={handleEnded}
                     />
-                    {console.log(played)}
                     <CustomMediaPlayer
                         ReactPlayer={reactPlayerRef.current}
                         onPlayPause={() => setPlay(!play)}
@@ -136,6 +157,8 @@ function Pracice1() {
                         onPrev={() => handlePrev()}
                         onLoop={() => setLoop(!loop)}
                         loop={loop}
+                        random={random}
+                        onRandom={() => setRandom(!random)}
                     />
                 </MediaControl>
             </div>

@@ -29,6 +29,8 @@ function CustomMediaPlayer({
     onPrev,
     loop,
     onLoop,
+    random,
+    onRandom,
 }) {
     const handleOnClickSeek = (e) => {
         const percentSeek = e.target.value / 100;
@@ -49,7 +51,7 @@ function CustomMediaPlayer({
         <div>
             <div className={cx('player-container')}>
                 <div className={cx('main')}>
-                    <button className={cx('random')}>
+                    <button className={cx('random', `${random ? 'active' : ''}`)} onClick={onRandom}>
                         <FontAwesomeIcon icon={faShuffle} />
                     </button>
                     <button className={cx('prev')} onClick={onPrev}>
