@@ -2,13 +2,10 @@ import classNames from 'classnames/bind';
 import React from 'react';
 import styles from './Disc.module.scss';
 const cx = classNames.bind(styles);
-function Disc({ playing, imgUrl }) {
+function Disc({ rotation, imgUrl, className }) {
     return (
-        <div className={cx('disc-container')}>
-            <div
-                className={cx('disc', `${playing == true ? 'rotateCD' : ''}`)}
-                style={{ backgroundImage: `url(${imgUrl})` }}
-            >
+        <div className={[cx('disc-container'), `${className}`].join(' ')}>
+            <div className={cx('disc', `${rotation ? 'rotation' : ''}`)} style={{ backgroundImage: `url(${imgUrl})` }}>
                 <div className={cx('circle')}></div>
             </div>
         </div>

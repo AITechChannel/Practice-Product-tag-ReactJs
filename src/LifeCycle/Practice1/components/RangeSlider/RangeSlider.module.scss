@@ -5,11 +5,12 @@
     align-items: center;
     justify-content: center;
     color: $text-light;
-
-    .loaded {
-        margin-right: 10px;
+    width: 100%;
+    padding: 0 20px;
+    .played {
+        margin-right: 16px;
     }
     .duration {
-        margin-left: 10px;
+        margin-left: 16px;
     }
 }

@@ -21,8 +21,12 @@
             margin-bottom: 20px;
         }
     }
-    .tab-control {
+    .disc {
+        background-color: $bg-zing;
+    }
+    .media-control {
         border-radius: 15px;
+        overflow: hidden;
         box-shadow: 2px 2px 2px 2px rgba($color: #000000, $alpha: 0.1);
         height: 480px;
         width: 30%;
@@ -35,6 +39,10 @@
             margin-bottom: 20px;
             height: 440px;
         }
+    }
+    .range-slider {
+        padding: 0 10px 20px 10px;
+        background-color: $bg-zing;
     }
 }
 

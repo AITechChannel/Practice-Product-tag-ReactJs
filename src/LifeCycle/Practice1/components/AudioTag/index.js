@@ -1,39 +1,54 @@
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import styles from './AudioTag.module.scss';
 const cx = classNames.bind(styles);
 
-function AudioTag({ number, img, song, singer, ablum, time, onPlay, onPause, playIndex, index, playStatus }) {
+function AudioTag({ number, img, song, singer, ablum, time, index, playing, onClick, playingIndex }) {
+    const [status, setStatus] = useState('pause');
+    const [isPlayingIndex, setIsPlayingIndex] = useState(0);
+
+    useEffect(() => {
+        if (playing) {
+            setStatus('play');
+        } else {
+            setStatus('pause');
+        }
+    }, [playing]);
+
+    useEffect(() => {
+        if (playingIndex === index && status === 'play') {
+            setIsPlayingIndex(true);
+        } else {
+            setIsPlayingIndex(false);
+        }
+    }, [index, playingIndex, status]);
+
+    const handleOnClick = (acitonName) => {
+        setStatus(acitonName);
+        onClick(acitonName);
+    };
+
     return (
         <div className={cx('container')}>
-            {console.log('render audio tag')}
             <div className={cx('left')}>
                 <span className={cx('number')}>{number}</span>
                 <div className={cx('photo')}>
                     <div className={cx('action')}>
                         <img src={img}></img>
                         <div className={cx('overlay-icon')}>
-                            <>
-                                {playIndex !== index && playStatus == false ? (
-                                    <span className={cx('icon-play')} onClick={onPlay}>
-                                        <FontAwesomeIcon icon={faPlay} />
-                                    </span>
-                                ) : (
-                                    <>
-                                        {playIndex == index && playStatus == true ? (
-                                            <span className={cx('icon-play')} onClick={onPause}>
-                                                <i className={cx('icon-play')}></i>
-                                            </span>
-                                        ) : (
-                                            <span className={cx('icon-play')} onClick={onPlay}>
-                                                <FontAwesomeIcon icon={faPlay} />
-                                            </span>
-                                        )}
-                                    </>
-                                )}
-                            </>
+                            {!isPlayingIndex && (
+                                <span className={cx('icon-play')} onClick={() => handleOnClick('play')}>
+                                    <FontAwesomeIcon icon={faPlay} />
+                                </span>
+                            )}
+
+                            {isPlayingIndex && (
+                                <span className={cx('icon-play')} onClick={() => handleOnClick('pause')}>
+                                    <i className={cx('icon-play')}></i>
+                                </span>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -3,12 +3,15 @@ import classNames from 'classnames/bind';
 import styles from './RangeSlider.module.scss';
 import { Slider } from '@mui/material';
 const cx = classNames.bind(styles);
-function RangeSlider({ loaded, duration }) {
+function RangeSlider({ played = '0:00', duration = '0:00', value, max, onChange, className }) {
+    const handleOnChange = (e) => {
+        onChange(e);
+    };
     return (
-        <div className={cx('range-slider-container')}>
-            {loaded ? <span className={cx('loaded')}>0:00</span> : null}
-            <Slider className={cx('slider')} />
-            {duration ? <span className={cx('duration')}>0:00</span> : null}
+        <div className={[cx('range-slider-container'), `${className}`].join(' ')}>
+            {played ? <span className={cx('played')}>{played}</span> : null}
+            <Slider min={0} max={max} value={value} onChange={(e) => handleOnChange(e)} />
+            {duration ? <span className={cx('duration')}>{duration}</span> : null}
         </div>
     );
 }
