@@ -1,0 +1,22 @@
+@import '../../../../scss/';
+
+.player-container {
+    width: 100%;
+    display: flex;
+    font-size: 4rem;
+    justify-content: space-between;
+    padding: 0 30px;
+    background-color: $bg-zing;
+    button {
+        background-color: $bg-zing;
+        color: $white-light;
+    }
+
+    .shuffle,
+    .loop {
+        color: $white;
+        &.active {
+            color: $primary;
+        }
+    }
+}

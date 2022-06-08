@@ -2,10 +2,14 @@ import classNames from 'classnames/bind';
 import React, { useCallback, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import AudioTag from './components/AudioTag';
-import CustomMediaPlayer from './components/CustomMediaPlayer';
+import Control from './components/Control';
 import playlistData from './components/data';
-import MediaControl from './components/MediaControl';
+import Disc from './components/Disc';
 import styles from './Practice1.module.scss';
+
+import { Slider } from '@mui/material';
+import RangeSlider from './components/RangeSlider';
+import { faLaptopHouse, faShuffle } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -16,90 +20,13 @@ function Pracice1() {
         'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/1/9/d/8/19d8b42b0aa5a00084d29c06a62556c7.jpg';
     const reactPlayerRef = useRef();
 
-    const [urlImage, setUrlImage] = useState(defaultUrlImage);
-    const [urlAudio, setUrlAudio] = useState(defaultUrlAudio);
+    const [playing, setPlaying] = useState(false);
 
-    const [play, setPlay] = useState(false);
-    const [playIndex, setPlayIndex] = useState('');
-
-    const [duration, setDuration] = useState('');
-    const [durationSeconds, setDurationSeconds] = useState('');
-
-    const [played, setPlayed] = useState('');
-    const [volume, setVolume] = useState(0.2);
-
-    const [muted, setMuted] = useState(false);
     const [loop, setLoop] = useState(false);
 
-    const [random, setRandom] = useState(false);
-
-    const handlePlay = useCallback((e, i) => {
-        setPlay(true);
-        setUrlAudio(playlistData[i].url);
-        setUrlImage(playlistData[i].img);
-        setPlayIndex(i);
-    }, []);
-
-    const handlePause = useCallback((e, i) => {
-        setPlay(false);
-    }, []);
-
-    const handleDuration = (duration) => {
-        const minutes = Math.floor(duration / 60);
-        const seconds = Math.floor(duration % 60);
-        const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-        setDuration(`${minutes}:${returnedSeconds}`);
-        setDurationSeconds(duration);
-    };
-
-    const handleProgress = (infoPlayed) => {
-        setPlayed(infoPlayed);
-    };
-
-    const handleVolume = (e) => {
-        setVolume(e.target.value / 100);
-    };
-
-    const handleMuted = () => {
-        setMuted(!muted);
-    };
-
-    const handleNext = () => {
-        if (playIndex < 5) {
-            setUrlAudio(playlistData[playIndex + 1].url);
-            setUrlImage(playlistData[playIndex + 1].img);
-            setPlayIndex(playIndex + 1);
-            setPlay(true);
-        }
-    };
-    const handlePrev = () => {
-        if (playIndex > 0) {
-            setUrlAudio(playlistData[playIndex - 1].url);
-            setUrlImage(playlistData[playIndex - 1].img);
-            setPlayIndex(playIndex - 1);
-            setPlay(true);
-        }
-    };
-
-    const handleEnded = () => {
-        if (!random) {
-            setUrlAudio(playlistData[playIndex + 1].url);
-            setUrlImage(playlistData[playIndex + 1].img);
-            setPlayIndex(playIndex + 1);
-            setPlay(true);
-        }
-        if (random) {
-            const randomNumber = Math.floor(Math.random() * 4);
-            console.log(randomNumber);
-            setUrlAudio(playlistData[randomNumber + 1].url);
-            setUrlImage(playlistData[randomNumber + 1].img);
-            setPlayIndex(randomNumber + 1);
-            setPlay(true);
-        }
-    };
     return (
-        <div className={cx('container')}>
-            <div className={cx('music-list')}>
+        <div className={cx('player-container')}>
+            {/* <div className={cx('list')}>
                 {playlistData.map((e, i) => (
                     <AudioTag
                         number={e.number}
@@ -108,59 +35,59 @@ function Pracice1() {
                         singer={e.singer}
                         ablum={e.ablum}
                         time={e.time}
-                        onPlay={() => handlePlay(e, i)}
-                        onPause={() => handlePause(e, i)}
-                        playIndex={playIndex}
                         index={i}
-                        playStatus={play}
                     />
                 ))}
-            </div>
-            <div className={cx('music-control')}>
-                <MediaControl rotateCD={play} image={urlImage}>
-                    <ReactPlayer
-                        ref={reactPlayerRef}
-                        className={cx('react-player')}
-                        url={urlAudio}
-                        config={{
-                            file: {
-                                forAudio: true,
-                                forceVideo: false,
-                            },
-                        }}
-                        height={50}
-                        width="100%"
-                        controls={true}
-                        playing={play}
-                        onPlay={() => setPlay(true)}
-                        onPause={() => setPlay(false)}
-                        onDuration={(duration) => handleDuration(duration)}
-                        onProgress={(infoPlayed) => handleProgress(infoPlayed)}
-                        onSeek={(e) => console.log('seek', e)}
-                        volume={volume}
-                        muted={muted}
-                        loop={loop}
-                        onEnded={handleEnded}
-                    />
-                    <CustomMediaPlayer
-                        ReactPlayer={reactPlayerRef.current}
-                        onPlayPause={() => setPlay(!play)}
-                        playStatus={play}
-                        duration={duration}
-                        played={played}
-                        durationSeconds={durationSeconds}
-                        volume={volume}
-                        onVolume={(e) => handleVolume(e)}
-                        muted={muted}
-                        onMuted={() => handleMuted()}
-                        onNext={() => handleNext()}
-                        onPrev={() => handlePrev()}
-                        onLoop={() => setLoop(!loop)}
-                        loop={loop}
-                        random={random}
-                        onRandom={() => setRandom(!random)}
-                    />
-                </MediaControl>
+            </div> */}
+            <div className={cx('tab-control')}>
+                <Disc />
+                <Control
+                    loop={loop}
+                    onClick={(actionName) => {
+                        console.log(actionName);
+
+                        switch (actionName) {
+                            case 'play':
+                                setPlaying(true);
+                                break;
+                        }
+                        switch (actionName) {
+                            case 'pause':
+                                setPlaying(false);
+                                break;
+                        }
+                        switch (actionName) {
+                            case 'loop':
+                                setLoop(!loop);
+                        }
+                    }}
+                />
+                <RangeSlider loaded={true} duration={true} />
+
+                <ReactPlayer
+                    ref={reactPlayerRef}
+                    className={cx('react-player')}
+                    url={defaultUrlAudio}
+                    // config={{
+                    //     file: {
+                    //         forAudio: true,
+                    //         forceVideo: false,
+                    //     },
+                    // }}
+                    // height={50}
+                    // width="100%"
+                    // controls={true}
+                    playing={playing}
+                    // onPlay={() => setPlay(true)}
+                    // onPause={() => setPlay(false)}
+                    // onDuration={(duration) => handleDuration(duration)}
+                    // onProgress={(infoPlayed) => handleProgress(infoPlayed)}
+                    // onSeek={(e) => console.log('seek', e)}
+                    // volume={volume}
+                    // muted={muted}
+                    loop={loop}
+                    // onEnded={handleEnded}
+                />
             </div>
         </div>
     );

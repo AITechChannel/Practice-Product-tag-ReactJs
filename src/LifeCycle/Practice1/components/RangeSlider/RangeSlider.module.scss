@@ -1,0 +1,15 @@
+@import '../../../../scss/';
+
+.range-slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-light;
+
+    .loaded {
+        margin-right: 10px;
+    }
+    .duration {
+        margin-left: 10px;
+    }
+}
