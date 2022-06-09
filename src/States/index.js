@@ -21,7 +21,7 @@ function States() {
         <div className={cx('wrapper')}>
             {practices.map((e, i) => {
                 return (
-                    <Fragment key={i}>
+                    <Fragment key={`states-${i}`}>
                         <h1 className={cx('title')}>{e.title}</h1>
                         {e.component}
                     </Fragment>

@@ -25,13 +25,10 @@ function Pracice1() {
     const [played, setPlayed] = useState('0:00');
     const [SecondsPlayed, setSecondsPlayed] = useState(0);
     const [secondsDuration, setSecondsDuration] = useState(0);
-
-    console.log(SecondsPlayed);
     const [audioUrl, setAudioUrl] = useState(defaultAudioUrl);
     const [imgUrl, setImgUrl] = useState(defaultImgUrl);
     const [playingIndex, setPlayingIndex] = useState(0);
     const [countLoopCurrent, setCountLoopCurrent] = useState(0);
-
     const [muted, setMuted] = useState(false);
 
     const handleOnClickControl = (actionName, count) => {
@@ -133,7 +130,6 @@ function Pracice1() {
             }
         }
     };
-    // console.log(SecondsPlayed);
     return (
         <div className={cx('player-container')}>
             <div className={cx('list')}>
@@ -178,12 +174,12 @@ function Pracice1() {
                     ref={reactPlayerRef}
                     className={cx('react-player')}
                     url={audioUrl}
-                    // config={{
-                    //     file: {
-                    //         forAudio: true,
-                    //         forceVideo: false,
-                    //     },
-                    // }}
+                    config={{
+                        file: {
+                            forAudio: true,
+                            forceVideo: false,
+                        },
+                    }}
                     playing={playing}
                     onDuration={(duration) => handleDuration(duration)}
                     onProgress={(infoPlayed) => handleProgress(infoPlayed)}
