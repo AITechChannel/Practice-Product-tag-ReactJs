@@ -41,8 +41,14 @@
         }
     }
     .range-slider {
-        padding: 0 10px 20px 10px;
+        flex: 1;
+    }
+
+    .slider-volume {
+        padding: 0 20px 20px 20px;
         background-color: $bg-zing;
+        width: 100%;
+        display: flex;
     }
 }
 

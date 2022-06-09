@@ -1,15 +1,13 @@
 import classNames from 'classnames/bind';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import AudioTag from './components/AudioTag';
 import Control from './components/Control';
 import playlistData from './components/data';
 import Disc from './components/Disc';
-import styles from './Practice1.module.scss';
-
-import { Slider } from '@mui/material';
 import RangeSlider from './components/RangeSlider';
-import { faLaptopHouse, faShuffle } from '@fortawesome/free-solid-svg-icons';
+import Volume from './components/Volume';
+import styles from './Practice1.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -28,10 +26,13 @@ function Pracice1() {
     const [SecondsPlayed, setSecondsPlayed] = useState(0);
     const [secondsDuration, setSecondsDuration] = useState(0);
 
+    console.log(SecondsPlayed);
     const [audioUrl, setAudioUrl] = useState(defaultAudioUrl);
     const [imgUrl, setImgUrl] = useState(defaultImgUrl);
     const [playingIndex, setPlayingIndex] = useState(0);
-    const [countCurrent, setCountCurrent] = useState(0);
+    const [countLoopCurrent, setCountLoopCurrent] = useState(0);
+
+    const [muted, setMuted] = useState(false);
 
     const handleOnClickControl = (actionName, count) => {
         switch (actionName) {
@@ -46,9 +47,9 @@ function Pracice1() {
         }
         switch (actionName) {
             case 'loop':
-                setCountCurrent(count);
-                setLoop(true);
+                setCountLoopCurrent(count);
                 setShuffle(false);
+                setLoop(true);
                 if (count > 3) {
                     setLoop(false);
                     setShuffle(false);
@@ -111,23 +112,19 @@ function Pracice1() {
         setImgUrl(playlistData[i].img);
         setPlayingIndex(i);
         setPlaying(true);
+
         if (playingIndex == i) {
             setPlaying(!playing);
         }
         console.log('click');
     };
 
-    const handleEnded = () => {
-        setCountCurrent(countCurrent - 1);
-        if ((countCurrent = 0)) {
-            setLoop(false);
-        }
+    const handleOnEnded = () => {
         if (shuffle) {
             const randomIndex = Math.floor(Math.random()) * 4;
             setPlayingIndex(randomIndex + 1);
             setAudioUrl(playlistData[randomIndex + 1].url);
             setImgUrl(playlistData[randomIndex + 1].img);
-        } else if (loop) {
         } else {
             if (playingIndex < 5) {
                 setPlayingIndex(playingIndex + 1);
@@ -136,6 +133,7 @@ function Pracice1() {
             }
         }
     };
+    // console.log(SecondsPlayed);
     return (
         <div className={cx('player-container')}>
             <div className={cx('list')}>
@@ -163,15 +161,18 @@ function Pracice1() {
                     shuffle={shuffle}
                     onClick={(actionName, count) => handleOnClickControl(actionName, count)}
                 />
-                <RangeSlider
-                    className={cx('range-slider')}
-                    played={played}
-                    duration={duration}
-                    min={0}
-                    value={Math.floor(SecondsPlayed)}
-                    max={Math.floor(secondsDuration)}
-                    onChange={(e) => handleChangeRange(e)}
-                />
+                <div className={cx('slider-volume')}>
+                    <RangeSlider
+                        className={cx('range-slider')}
+                        played={played}
+                        duration={duration}
+                        min={0}
+                        value={Math.floor(SecondsPlayed)}
+                        max={Math.floor(secondsDuration)}
+                        onChange={(e) => handleChangeRange(e)}
+                    />
+                    <Volume muted={muted} onClick={() => setMuted(!muted)} />
+                </div>
 
                 <ReactPlayer
                     ref={reactPlayerRef}
@@ -186,11 +187,10 @@ function Pracice1() {
                     playing={playing}
                     onDuration={(duration) => handleDuration(duration)}
                     onProgress={(infoPlayed) => handleProgress(infoPlayed)}
-                    onSeek={(e) => console.log('seek', e)}
                     // volume={volume}
-                    // muted={muted}
+                    muted={muted}
                     loop={loop}
-                    onEnded={handleEnded}
+                    onEnded={handleOnEnded}
                 />
             </div>
         </div>

@@ -18,13 +18,14 @@ const cx = classNames.bind(styles);
 
 function Control({ onClick, loop, shuffle, className, playing }) {
     const [count, setCount] = useState(0);
-    console.log(count);
 
     const handleOnClick = (actionName, count) => {
-        if (count < 4) {
-            setCount(count + 1);
-        } else {
-            setCount(0);
+        if (actionName === 'loop') {
+            if (count < 4) {
+                setCount(count + 1);
+            } else {
+                setCount(0);
+            }
         }
         onClick(actionName, count);
     };
