@@ -15,27 +15,33 @@ import { FaFacebook, FaApple } from 'react-icons/fa';
 import styles from './Practice2.module.scss';
 import classNames from 'classnames/bind';
 import * as yup from 'yup';
-import { useFormik } from 'formik';
+import { Field, useFormik } from 'formik';
 
 const cx = classNames.bind(styles);
 
 function Practice2() {
-    const validationSchema = yup.object({
+    const validationSchema = yup.object().shape({
         firstName: yup.string('Enter your first name').required('First name is required'),
         lastName: yup.string('Enter your last name').required('Last name is required'),
         phone: yup
             .string('Enter your phone number')
             .required('Phone number is required')
+            .matches(
+                /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+                'Phone number is not valid',
+            )
             .min(10, 'Phone number must 10 number length')
             .max(10, 'Phone number must 10 number length'),
+
         email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
         password: yup
             .string('Enter your password')
             .min(8, 'Password should be of minimum 8 characters length')
             .required('Password is required'),
 
+        recive: yup.boolean(),
         confirmPassword: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match'),
-        term: yup.bool().oneOf([true], 'Accept Terms & Conditions is required'),
+        term: yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
     });
     const formik = useFormik({
         initialValues: {
@@ -45,6 +51,7 @@ function Practice2() {
             email: '',
             password: '',
             confirmPassword: '',
+            recive: 'false',
             term: 'false',
         },
         validationSchema: validationSchema,
@@ -138,28 +145,23 @@ function Practice2() {
                     />
                 </div>
                 <div className={cx('input-container-bottom')}>
-                    <FormControl onChange={formik.handleChange}>
-                        <Checkbox name="term" size="large" />
-
-                        <FormHelperText error={formik.touched.term && formik.errors.term}>
-                            test check box
-                        </FormHelperText>
-                    </FormControl>
-                    <div>
-                        <Checkbox size="large" />
+                    <div onChange={formik.handleChange}>
+                        <Checkbox name="recive" size="large" value={formik.values.recive} />
                         <span>Yes, I want to recicve Lottery display emails</span>
                     </div>
-                    <div>
-                        {console.log(Boolean(formik.errors.term))}
-                        <Checkbox
-                            size="large"
-                            className={cx(`${formik.touched.term && formik.errors.term ? 'active' : null}`)}
-                        />
+                    <div onChange={formik.handleChange}>
+                        <Checkbox name="term" size="large" value={formik.values.term} />
                         <span>
                             I agree to all <span style={{ color: 'blue' }}>Term, Privacy Policy </span> and
                             <span style={{ color: 'blue' }}> Fees</span>
                         </span>
+                        {formik.touched.term && Boolean(formik.errors.term) && (
+                            <FormHelperText error={formik.touched.term && Boolean(formik.errors.term)}>
+                                {formik.errors.term}
+                            </FormHelperText>
+                        )}
                     </div>
+                    <div></div>
                     <Button
                         type="submit"
                         variant="contained"
