@@ -1,9 +1,8 @@
-import Props from './Props';
-import States from './States';
-import LifeCycle from './LifeCycle';
-import Formik from './Formik';
+import Props from './pages/Props';
+import States from './pages/States';
+import LifeCycle from './pages/LifeCycle';
+import Formik from './pages/Formik';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.scss';
 import MainLayout from './components/layouts/MainLayout';
 
 const sessions = [

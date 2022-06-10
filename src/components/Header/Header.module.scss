@@ -46,7 +46,9 @@
             position: relative;
         }
     }
-
+    a {
+        color: $white;
+    }
     a:hover {
         color: #61dbfb;
         transition: all 0.3s ease;
@@ -60,7 +62,9 @@
         margin-left: 20px;
     }
     .active {
-        color: var(--primary);
+        a {
+            color: $primary;
+        }
     }
     flex: 1;
 

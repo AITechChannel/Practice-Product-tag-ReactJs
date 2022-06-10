@@ -1,3 +1,5 @@
+@import '../../scss/';
+
 .btn {
     padding: 10px 20px;
     border: none;
@@ -9,7 +11,7 @@
     justify-content: center;
 }
 .primary {
-    background-color: var(--primary);
+    background-color: $primary;
     color: white;
 }
 
@@ -55,18 +57,18 @@
     }
 }
 .activeGreenBg {
-    background-color: var(--primary);
+    background-color: $primary;
     color: white;
     &:hover {
-        background-color: var(--primary);
+        background-color: $primary;
         color: white;
     }
 }
 .activeGreenCl {
     .icon {
-        color: var(--primary);
+        color: $primary;
         &:hover {
-            color: var(--primary);
+            color: $primary;
         }
     }
 }

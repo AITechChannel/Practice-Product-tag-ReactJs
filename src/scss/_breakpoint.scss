@@ -1,3 +1,11 @@
+$primary: #61dbfb;
+$bg-zing: #170f23;
+$white: #ffff;
+$grey: #443d4d;
+$white-light: #e5e5e5;
+$text-light: #817d88;
+$text: #333;
+
 @mixin mobile {
     @media only screen and (max-width: 600px) {
         @content;
