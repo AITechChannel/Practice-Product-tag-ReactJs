@@ -1,9 +1,11 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
 import countries from '../../data/countries';
 function Countries({ formik }) {
     return (
         <FormControl margin="normal" size="small" fullWidth>
-            <InputLabel id="demo-simple-select-label">Your Country</InputLabel>
+            <InputLabel id="country-select-label" error={formik.touched.country && Boolean(formik.errors.country)}>
+                Your Country
+            </InputLabel>
             <Select
                 name="country"
                 labelId="country"
@@ -11,6 +13,7 @@ function Countries({ formik }) {
                 value={formik.values.country}
                 label="Your Country"
                 onChange={formik.handleChange}
+                error={formik.touched.country && Boolean(formik.errors.country)}
             >
                 {countries.map((e, i) => (
                     <MenuItem key={`country-${i}`} value={e.label}>
@@ -18,6 +21,11 @@ function Countries({ formik }) {
                     </MenuItem>
                 ))}
             </Select>
+            {formik.touched.country && Boolean(formik.errors.country) && (
+                <FormHelperText error={formik.touched.country && Boolean(formik.errors.country)}>
+                    Country is required
+                </FormHelperText>
+            )}
         </FormControl>
     );
 }

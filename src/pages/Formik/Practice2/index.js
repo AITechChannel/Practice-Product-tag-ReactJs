@@ -194,7 +194,7 @@ function Practice2() {
                         <FormHelperText
                             error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
                         >
-                            {formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+                            {formik.touched.confirmPassword && formik.errors.confirmPassword}
                         </FormHelperText>
                     </FormControl>
                 </div>
