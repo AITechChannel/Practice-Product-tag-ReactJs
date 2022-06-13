@@ -1,0 +1,8 @@
+.checkbox-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .list-item {
+        display: flex;
+    }
+}
