@@ -2,22 +2,36 @@
 .form-container {
     width: 100%;
     border: 1px solid #f0f0f0;
-    padding: 20px;
+    padding: 30px;
     border-radius: 20px;
     box-shadow: 2px 2px 5px 2px rgba($color: #000000, $alpha: 0.2);
+    @include mobile {
+        padding: 10px;
+        box-shadow: unset;
+        border: unset;
+    }
     .input-container-top {
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+        @include tablet {
+            flex-direction: column;
+        }
     }
     .input-item {
         width: 45%;
-        // padding: 0 20px;
+        @include tablet {
+            width: 100%;
+        }
     }
 
     .input-container-bottom {
         width: 45%;
         padding: 0 20px;
+        @include tablet {
+            width: 100%;
+            padding: unset;
+        }
     }
 
     .btn-secondary,
@@ -47,8 +61,4 @@
             background-color: #01c38e;
         }
     }
-
-    // .input-item {
-    //     margin-bottom: 14px;
-    // }
 }

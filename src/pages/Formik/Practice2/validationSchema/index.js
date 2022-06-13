@@ -23,9 +23,9 @@ const validationSchema = yup.object().shape({
     confirmPassword: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match'),
     checkBoxGroup: yup.string('sdfsdf'),
     term: yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
-
     gender: yup.string('Choose gender').required('Choose gender'),
-    tags: yup.array().min(1, 'messageHere'),
+    country: yup.string('Choose gender').required('Choose gender'),
+    skills: yup.array().min(1, 'messageHere'),
 });
 
 export default validationSchema;

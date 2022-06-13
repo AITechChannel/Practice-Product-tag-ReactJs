@@ -1,21 +1,21 @@
 import {
     Button,
     Checkbox,
-    FormHelperText,
-    FormControlLabel,
-    TextField,
-    FormGroup,
     FormControl,
+    FormControlLabel,
+    FormGroup,
+    FormHelperText,
     IconButton,
     InputAdornment,
-    OutlinedInput,
     InputLabel,
+    OutlinedInput,
 } from '@mui/material';
 import classNames from 'classnames/bind';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import CheckBoxList from './components/CheckBoxList';
+import Countries from './components/Countries';
 import RadioList from './components/RadioList';
 import initialValues from './initialValues';
 import styles from './Practice2.module.scss';
@@ -24,7 +24,6 @@ const cx = classNames.bind(styles);
 
 function Practice2() {
     const [showPassword, setShowPassword] = useState(false);
-    console.log(showPassword);
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: validationSchema,
@@ -47,7 +46,7 @@ function Practice2() {
                 <div className={cx('input-container-top')}>
                     <FormControl margin="normal" className={cx('input-item', 'firstName')}>
                         <InputLabel
-                            htmlFor="outlined-adornment-password"
+                            htmlFor="outlined-adornment-first-name"
                             error={formik.touched.firstName && Boolean(formik.errors.firstName)}
                         >
                             First Name
@@ -68,7 +67,7 @@ function Practice2() {
 
                     <FormControl margin="normal" className={cx('input-item', 'lastName')}>
                         <InputLabel
-                            htmlFor="outlined-adornment-password"
+                            htmlFor="outlined-adornment-last-name"
                             error={formik.touched.lastName && Boolean(formik.errors.lastName)}
                         >
                             Last Name
@@ -89,7 +88,7 @@ function Practice2() {
 
                     <FormControl margin="normal" className={cx('input-item', 'email')}>
                         <InputLabel
-                            htmlFor="outlined-adornment-password"
+                            htmlFor="outlined-adornment-email"
                             error={formik.touched.email && Boolean(formik.errors.email)}
                         >
                             Email
@@ -201,8 +200,9 @@ function Practice2() {
                 </div>
                 <div className={cx('input-container-bottom')}>
                     <RadioList formik={formik} />
+                    <Countries formik={formik} />
 
-                    <CheckBoxList formik={formik} />
+                    <CheckBoxList formik={formik} list={['ReactJS', 'NodeJS', 'PHP', 'Python']} nameList={'skills'} />
 
                     <FormControl>
                         <FormGroup>
