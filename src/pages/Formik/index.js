@@ -7,12 +7,14 @@ import Practice3 from './Practice3';
 // import Practice5 from './Practice5';
 // import Practice6 from './Practice6';
 import styles from './Formik.module.scss';
+import FirebaseSingIn from './FirebaseSignIn';
 const cx = classNames.bind(styles);
 const practices = [
+    { title: '', component: <FirebaseSingIn /> },
     { title: '1. Practice1', component: <Practice1 /> },
-
     { title: '2. Practice2', component: <Practice2 /> },
     { title: '3. Practice3', component: <Practice3 /> },
+
     // { title: '4. Practice4', component: <Practice4 /> },
     // { title: '5. Practice5', component: <Practice5 /> },
     // { title: '6. Practice6', component: <Practice6 /> },

@@ -23,7 +23,7 @@ function Practice3() {
 
     useEffect(() => {
         const apiPhotos =
-            'https://api.themoviedb.org/3/movie/popular?api_key=718ca6dfce46881e7e3f67da8daa3e77&language=en-US&page=10';
+            'https://api.themoviedb.org/3/movie/popular?api_key=718ca6dfce46881e7e3f67da8daa3e77&language=en-US&page=2';
         const getphotos = async () => {
             try {
                 const res = await fetch(apiPhotos);

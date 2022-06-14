@@ -1,12 +1,10 @@
-import React from 'react';
-import { Button, Input, TextField } from '@mui/material';
-// import 'antd/dist/antd.css';
-import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook, FaApple } from 'react-icons/fa';
-import styles from './Practice1.module.scss';
+import { Button, TextField } from '@mui/material';
 import classNames from 'classnames/bind';
-import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { FaApple, FaFacebook } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
+import * as yup from 'yup';
+import styles from './Practice1.module.scss';
 
 const cx = classNames.bind(styles);
 function Practice1() {
@@ -64,7 +62,7 @@ function Practice1() {
                     className={cx('btn-primary', 'submit')}
                     size="large"
                 >
-                    Continue
+                    Đăng nhập
                 </Button>
                 <Button
                     variant="contained"

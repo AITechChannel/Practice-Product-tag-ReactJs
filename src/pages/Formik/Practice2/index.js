@@ -13,7 +13,7 @@ import {
 import classNames from 'classnames/bind';
 import { useFormik } from 'formik';
 import { useState } from 'react';
-import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
+import { MdContactPhone, MdEmail, MdPermIdentity, MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import CheckBoxList from './components/CheckBoxList';
 import Countries from './components/Countries';
 import RadioList from './components/RadioList';
@@ -28,7 +28,7 @@ function Practice2() {
         initialValues: initialValues,
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            // alert(JSON.stringify(values, null, 2));
+            alert(JSON.stringify(values, null, 2));
             console.log(values);
         },
     });
@@ -59,6 +59,13 @@ function Practice2() {
                             value={formik.values.firstName}
                             onChange={formik.handleChange}
                             error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                            endAdornment={
+                                <InputAdornment position="end" sx={{ marginRight: '12px' }}>
+                                    <IconButton edge="end">
+                                        <MdPermIdentity />
+                                    </IconButton>
+                                </InputAdornment>
+                            }
                         />
                         <FormHelperText error={formik.touched.firstName && Boolean(formik.errors.firstName)}>
                             {formik.touched.firstName && formik.errors.firstName}
@@ -80,6 +87,13 @@ function Practice2() {
                             value={formik.values.lastName}
                             onChange={formik.handleChange}
                             error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                            endAdornment={
+                                <InputAdornment position="end" sx={{ marginRight: '12px' }}>
+                                    <IconButton edge="end">
+                                        <MdPermIdentity />
+                                    </IconButton>
+                                </InputAdornment>
+                            }
                         />
                         <FormHelperText error={formik.touched.lastName && Boolean(formik.errors.lastName)}>
                             {formik.touched.lastName && formik.errors.lastName}
@@ -101,6 +115,13 @@ function Practice2() {
                             value={formik.values.email}
                             onChange={formik.handleChange}
                             error={formik.touched.email && Boolean(formik.errors.email)}
+                            endAdornment={
+                                <InputAdornment position="end" sx={{ marginRight: '12px' }}>
+                                    <IconButton edge="end">
+                                        <MdEmail />
+                                    </IconButton>
+                                </InputAdornment>
+                            }
                         />
                         <FormHelperText error={formik.touched.email && Boolean(formik.errors.email)}>
                             {formik.touched.email && formik.errors.email}
@@ -122,6 +143,13 @@ function Practice2() {
                             value={formik.values.phone}
                             onChange={formik.handleChange}
                             error={formik.touched.phone && Boolean(formik.errors.phone)}
+                            endAdornment={
+                                <InputAdornment position="end" sx={{ marginRight: '12px' }}>
+                                    <IconButton edge="end">
+                                        <MdContactPhone />
+                                    </IconButton>
+                                </InputAdornment>
+                            }
                         />
                         <FormHelperText error={formik.touched.phone && Boolean(formik.errors.phone)}>
                             {formik.touched.phone && formik.errors.phone}
@@ -209,7 +237,7 @@ function Practice2() {
                             <FormControlLabel
                                 onChange={formik.handleChange}
                                 control={<Checkbox name="reciveEmail" size="large" value={formik.values.reciveEmail} />}
-                                label="Yes, I want to recicve Lottery display emails"
+                                label="Yes, I want to recicve notifycation to your email"
                             ></FormControlLabel>
                         </FormGroup>
                     </FormControl>

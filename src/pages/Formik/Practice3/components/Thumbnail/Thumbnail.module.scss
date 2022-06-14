@@ -1,19 +1,43 @@
-@import '../../../../scss/';
+@import '../../../../../scss/';
 
 .thumbnail-container {
     display: flex;
 
+    @include tablet {
+        flex-wrap: wrap;
+    }
+
+    .search {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        padding: 0 20px;
+        border: 1px solid $text-light;
+        &:focus {
+            border: 1px solid $primary;
+        }
+    }
+
     .main {
-        box-shadow: 2px 2px 2px 1px rgba($color: #000000, $alpha: 0.05);
+        box-shadow: 2px 2px 3px 2px rgba($color: #000000, $alpha: 0.05);
         border-radius: 10px;
         margin-right: 16px;
         padding: 20px;
+        @include tablet {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 16px;
+        }
     }
     .main-info {
         display: flex;
     }
     .des {
         display: flex;
+        @include tablet {
+            flex-wrap: wrap;
+        }
     }
     .temp {
         font-size: 6rem;
@@ -34,6 +58,7 @@
         padding: 0 20px;
         display: flex;
         align-items: center;
+        justify-content: center;
         flex: 1;
         height: 80px;
         border-radius: 10px;
@@ -44,20 +69,24 @@
         flex: 1;
     }
     .line-chart {
+        width: 100%;
         padding: 20px;
         position: relative;
         margin-top: 16px;
         height: 400px;
         border-radius: 10px;
         box-shadow: 2px 2px 3px 2px rgba($color: #000000, $alpha: 0.05);
+        @include tablet {
+            display: none;
+        }
     }
     .weather-icon {
         display: flex;
         justify-content: space-between;
         position: absolute;
         font-size: 6rem;
-        left: 60px;
-        right: 60px;
+        left: 80px;
+        right: 80px;
         top: 50%;
         color: $primary;
     }

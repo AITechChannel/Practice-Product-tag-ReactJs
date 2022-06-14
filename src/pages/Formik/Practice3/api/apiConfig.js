@@ -1,6 +1,6 @@
 const apiConfig = {
-    baseUrl: 'https://api.openweathermap.org/data/2.5/',
-    apiKey: 'd78fd1588e1b7c0c2813576ba183a667',
+    baseUrl: process.env.REACT_APP_WEATHER_BASE_URL,
+    apiKey: process.env.REACT_APP_WEATHER_API_KEY,
     iconUrl: (path) => {
         return `https://openweathermap.org/img/wn/${path}@4x.png`;
     },

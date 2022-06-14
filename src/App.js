@@ -13,6 +13,7 @@ const sessions = [
 ];
 
 function App() {
+    console.log(process.env);
     return (
         <BrowserRouter>
             <Routes>

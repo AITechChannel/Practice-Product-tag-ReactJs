@@ -7,7 +7,8 @@ import styles from './Practice3.module.scss';
 import classNames from 'classnames/bind';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-import Thumbnail from './Thumbnail';
+import Thumbnail from './components/Thumbnail';
+import FirebaseSingIn from '../FirebaseSignIn';
 
 const cx = classNames.bind(styles);
 function Practice3() {

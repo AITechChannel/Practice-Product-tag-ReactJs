@@ -1,36 +1,36 @@
 const data = [
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-6-images/1.jpg',
+        imgSrc: 'https://product.hstatic.net/1000402464/product/ws19ss39d-ldus__3__b2ea2cf26ae1467b80611a8006ef2397_master.jpg',
         title: 'eodem modo typi',
         des: 'Lorem Ipsum is simply dummy text of the printing.',
         price: '$25',
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-6-images/2.jpg',
+        imgSrc: 'https://product.hstatic.net/1000402464/product/ws19ss39d-ldus__3__b2ea2cf26ae1467b80611a8006ef2397_master.jpg',
         title: 'eodem modo typi',
         des: 'Lorem Ipsum is simply dummy text of the printing.',
         price: '$25',
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-6-images/3.jpg',
+        imgSrc: 'https://product.hstatic.net/1000402464/product/ws19ss39d-ldus__3__b2ea2cf26ae1467b80611a8006ef2397_master.jpg',
         title: 'eodem modo typi',
         des: 'Lorem Ipsum is simply dummy text of the printing.',
         price: '$25',
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-6-images/4.jpg',
+        imgSrc: 'https://product.hstatic.net/1000402464/product/ws19ss39d-ldus__3__b2ea2cf26ae1467b80611a8006ef2397_master.jpg',
         title: 'eodem modo typi',
         des: 'Lorem Ipsum is simply dummy text of the printing.',
         price: '$25',
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-6-images/1.jpg',
+        imgSrc: 'https://product.hstatic.net/1000402464/product/ws19ss39d-ldus__3__b2ea2cf26ae1467b80611a8006ef2397_master.jpg',
         title: 'eodem modo typi',
         des: 'Lorem Ipsum is simply dummy text of the printing.',
         price: '$25',
     },
     {
-        imgSrc: 'https://raw.githubusercontent.com/ngothanhtung/reactjs-tutorials/master/3-Homeworks/Session01/block-ui-6-images/4.jpg',
+        imgSrc: 'https://product.hstatic.net/1000402464/product/ws19ss39d-ldus__3__b2ea2cf26ae1467b80611a8006ef2397_master.jpg',
         title: 'eodem modo typi',
         des: 'Lorem Ipsum is simply dummy text of the printing.',
         price: '$25',
