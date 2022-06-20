@@ -32,18 +32,40 @@ const uiConfig = {
 
 function FirebaseSingIn() {
     const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
+
+    const [isSingOut, setIsSingOut] = useState(false);
     console.log(isSignedIn);
 
     // Listen to the Firebase Auth state and set the local state.
     useEffect(() => {
         const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
             setIsSignedIn(!!user);
-            const token = await user.getIdToken();
-            console.log('token user:', token);
-            config.headers.Authorization = `Bearer ${token}`;
         });
         return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
     }, []);
+
+    useEffect(() => {
+        if (isSingOut) {
+            const log = async () => {
+                await firebase
+                    .auth()
+                    .signOut()
+                    .then(function () {
+                        sessionStorage.clear();
+                        localStorage.clear();
+                        console.log('clear');
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            };
+            log();
+        }
+    }, [isSingOut]);
+
+    const handleLogout = () => {
+        setIsSingOut(true);
+    };
 
     if (!isSignedIn) {
         return (
@@ -59,6 +81,7 @@ function FirebaseSingIn() {
             <p>Login complete! </p>
             <p>Welcome {firebase.auth().currentUser.displayName}!</p>
             <p>Please fill out the form below to apply team AITechchannel</p>
+            {/* <button onClick={handleLogout}>Logout</button> */}
             <Button variant="outlined" onClick={() => firebase.auth().signOut()}>
                 Sign-out
             </Button>

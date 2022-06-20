@@ -18,11 +18,17 @@
         display: flex;
         justify-content: flex-start;
 
-        padding: 10px 40px;
+        padding: 10px 70px;
         border-radius: 10px;
+        @include mobile {
+            padding: 10px 32px;
+        }
 
         span {
-            margin-right: 70px;
+            margin-right: 40px;
+            @include mobile {
+                margin-right: 18px;
+            }
         }
         &:hover {
             background-color: #e5f9f2;

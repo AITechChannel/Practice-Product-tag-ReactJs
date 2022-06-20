@@ -1,5 +1,6 @@
 import axios from 'axios';
 import queryString from 'query-string';
+import firebase from 'firebase/compat/app';
 
 import apiConfig from './apiConfig';
 
@@ -12,6 +13,14 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use(async (config) => {
+    // attach token into request header
+    const currentUser = firebase.auth().currentUser;
+
+    if (currentUser) {
+        const token = await currentUser.getIdToken();
+        console.log('token user:', token);
+        config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
 });
 
