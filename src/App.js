@@ -6,10 +6,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/layouts/MainLayout';
 
 const sessions = [
-    { path: '/Practice-ReactJS/session1', tabName: 'Session1', component: Props },
-    { path: '/Practice-ReactJS/session2', tabName: 'Session2', component: States },
-    { path: '/Practice-ReactJS', tabName: 'Session3', component: LifeCycle },
-    { path: '/Practice-ReactJS/session4', tabName: 'Session4', component: Formik },
+    { path: '/', tabName: 'Session1', component: Props },
+    { path: '/session2', tabName: 'Session2', component: States },
+    { path: '/session3', tabName: 'Session3', component: LifeCycle },
+    { path: '/session4', tabName: 'Session4', component: Formik },
 ];
 
 function App() {
